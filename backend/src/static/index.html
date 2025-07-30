@@ -1,0 +1,100 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Weekly Recipe Selector</title>
+    <link rel="stylesheet" href="styles.css">
+</head>
+<body>
+    <div class="container">
+        <header>
+            <h1>🍽️ Weekly Dinner Recipe Selector</h1>
+            <p>Select 4 gluten-free dinner recipes for this week</p>
+        </header>
+
+        <div class="progress-section">
+            <div class="progress-bar">
+                <div class="progress-fill" id="progressFill"></div>
+            </div>
+            <p class="progress-text">Selected: <span id="selectedCount">0</span>/4 recipes</p>
+        </div>
+
+        <div class="main-content">
+            <div class="recipes-section">
+                <h2>Available Recipes</h2>
+                <div class="filter-controls">
+                    <select id="proteinFilter">
+                        <option value="">All Proteins</option>
+                        <option value="chicken">Chicken</option>
+                        <option value="salmon">Salmon</option>
+                        <option value="beef">Beef</option>
+                        <option value="shrimp">Shrimp</option>
+                        <option value="turkey">Turkey</option>
+                        <option value="pork">Pork</option>
+                        <option value="fish">Fish</option>
+                    </select>
+                    
+                    <select id="cuisineFilter">
+                        <option value="">All Cuisines</option>
+                        <option value="asian">Asian</option>
+                        <option value="mediterranean">Mediterranean</option>
+                        <option value="american">American</option>
+                        <option value="healthy">Healthy</option>
+                        <option value="thai">Thai</option>
+                        <option value="indian">Indian</option>
+                    </select>
+                    
+                    <select id="cookingMethodFilter">
+                        <option value="">All Cooking Methods</option>
+                        <option value="stove">Stove</option>
+                        <option value="oven">Oven</option>
+                        <option value="grill">Grill</option>
+                        <option value="air_fryer">Air Fryer</option>
+                        <option value="instant_pot">Instant Pot</option>
+                    </select>
+                </div>
+                
+                <div id="recipesGrid" class="recipes-grid">
+                    <!-- Recipes will be loaded here -->
+                </div>
+            </div>
+
+            <div class="selection-section">
+                <h2>Your Weekly Menu</h2>
+                <div id="selectedRecipes" class="selected-recipes">
+                    <div class="empty-selection">
+                        <p>Select recipes to see them here</p>
+                    </div>
+                </div>
+                
+                <div class="ingredient-overlap" id="ingredientOverlap" style="display: none;">
+                    <h3>🔄 Ingredient Efficiency</h3>
+                    <div id="overlapInfo"></div>
+                </div>
+                
+                <button id="generateGroceryList" class="grocery-btn" disabled>
+                    Generate Grocery List
+                </button>
+            </div>
+        </div>
+
+        <div id="groceryModal" class="modal" style="display: none;">
+            <div class="modal-content">
+                <span class="close">&times;</span>
+                <h2>🛒 Your Grocery List</h2>
+                <div id="groceryContent"></div>
+                <button id="downloadGroceryList" class="download-btn">Download List</button>
+            </div>
+        </div>
+
+        <div id="loadingSpinner" class="loading" style="display: none;">
+            <div class="spinner"></div>
+            <p>Loading recipes...</p>
+        </div>
+    </div>
+
+    <script src="script.js"></script>
+</body>
+</html>
+

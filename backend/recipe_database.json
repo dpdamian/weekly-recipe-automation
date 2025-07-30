@@ -1,0 +1,2724 @@
+{
+  "recipes": [
+    {
+      "id": "user_001",
+      "name": "Asian Chicken and Rice Bowl",
+      "protein": "chicken",
+      "vegetables": [
+        "broccoli",
+        "carrots"
+      ],
+      "starch": "rice",
+      "cuisine": "asian",
+      "gluten_free": true,
+      "user_rating": 5,
+      "ingredients": [
+        "chicken breast",
+        "broccoli",
+        "carrots",
+        "rice",
+        "soy sauce",
+        "garlic",
+        "ginger"
+      ],
+      "source": "user_favorite",
+      "notes": "Colorful bowl with protein and vegetables",
+      "suggestion_number": 8,
+      "week_date": "2025-07-30",
+      "suggested_date": "2025-07-30T18:45:42.730563",
+      "cooking_method": "stove",
+      "equipment": [
+        "stove",
+        "pan"
+      ]
+    },
+    {
+      "id": "user_002",
+      "name": "Teriyaki Salmon with Vegetables",
+      "protein": "salmon",
+      "vegetables": [
+        "broccoli",
+        "bell peppers"
+      ],
+      "starch": "rice",
+      "cuisine": "asian",
+      "gluten_free": true,
+      "user_rating": 5,
+      "ingredients": [
+        "salmon fillet",
+        "broccoli",
+        "bell peppers",
+        "rice",
+        "teriyaki sauce",
+        "sesame oil"
+      ],
+      "source": "user_favorite",
+      "notes": "Glazed salmon with colorful vegetables",
+      "suggestion_number": 11,
+      "week_date": "2025-07-30",
+      "suggested_date": "2025-07-30T18:41:55.686319",
+      "cooking_method": "oven",
+      "equipment": [
+        "oven"
+      ],
+      "alternative_methods": [
+        "grill",
+        "air_fryer"
+      ]
+    },
+    {
+      "id": "user_003",
+      "name": "Mediterranean Chicken Bowl",
+      "protein": "chicken",
+      "vegetables": [
+        "tomatoes",
+        "cucumbers",
+        "olives"
+      ],
+      "starch": "quinoa",
+      "cuisine": "mediterranean",
+      "gluten_free": true,
+      "user_rating": 5,
+      "ingredients": [
+        "chicken breast",
+        "quinoa",
+        "tomatoes",
+        "cucumbers",
+        "olives",
+        "feta cheese",
+        "olive oil"
+      ],
+      "source": "user_favorite",
+      "notes": "Fresh Mediterranean flavors",
+      "cooking_method": "stove",
+      "equipment": [
+        "stove",
+        "pan"
+      ],
+      "suggestion_number": 13,
+      "week_date": "2025-07-30",
+      "suggested_date": "2025-07-30T18:45:08.979906"
+    },
+    {
+      "id": "user_004",
+      "name": "Beef Stir Fry with Rice",
+      "protein": "beef",
+      "vegetables": [
+        "snap peas",
+        "carrots",
+        "onions"
+      ],
+      "starch": "rice",
+      "cuisine": "asian",
+      "gluten_free": true,
+      "user_rating": 5,
+      "ingredients": [
+        "beef strips",
+        "snap peas",
+        "carrots",
+        "onions",
+        "rice",
+        "stir fry sauce",
+        "garlic"
+      ],
+      "source": "user_favorite",
+      "notes": "Quick and flavorful stir fry",
+      "cooking_method": "stove",
+      "equipment": [
+        "stove",
+        "pan"
+      ],
+      "suggestion_number": 10,
+      "week_date": "2025-07-30",
+      "suggested_date": "2025-07-30T18:42:15.739533"
+    },
+    {
+      "id": "user_005",
+      "name": "Shrimp and Vegetable Bowl",
+      "protein": "shrimp",
+      "vegetables": [
+        "zucchini",
+        "bell peppers",
+        "onions"
+      ],
+      "starch": "rice",
+      "cuisine": "asian",
+      "gluten_free": true,
+      "user_rating": 5,
+      "ingredients": [
+        "shrimp",
+        "zucchini",
+        "bell peppers",
+        "onions",
+        "rice",
+        "garlic",
+        "ginger"
+      ],
+      "source": "user_favorite",
+      "notes": "Light and healthy seafood dish",
+      "cooking_method": "stove",
+      "equipment": [
+        "stove",
+        "pan"
+      ],
+      "suggestion_number": 5,
+      "week_date": "2025-07-30",
+      "suggested_date": "2025-07-30T18:42:15.739525"
+    },
+    {
+      "id": "user_006",
+      "name": "Turkey and Sweet Potato Bowl",
+      "protein": "turkey",
+      "vegetables": [
+        "sweet potatoes",
+        "green beans"
+      ],
+      "starch": "sweet potato",
+      "cuisine": "american",
+      "gluten_free": true,
+      "user_rating": 5,
+      "ingredients": [
+        "ground turkey",
+        "sweet potatoes",
+        "green beans",
+        "onions",
+        "herbs"
+      ],
+      "source": "user_favorite",
+      "notes": "Hearty and nutritious",
+      "cooking_method": "stove",
+      "equipment": [
+        "stove",
+        "pan"
+      ],
+      "suggestion_number": 3,
+      "week_date": "2025-07-30",
+      "suggested_date": "2025-07-30T18:45:42.730552"
+    },
+    {
+      "id": "user_007",
+      "name": "Pork and Rice Noodle Bowl",
+      "protein": "pork",
+      "vegetables": [
+        "bok choy",
+        "mushrooms"
+      ],
+      "starch": "rice noodles",
+      "cuisine": "asian",
+      "gluten_free": true,
+      "user_rating": 5,
+      "ingredients": [
+        "pork tenderloin",
+        "rice noodles",
+        "bok choy",
+        "mushrooms",
+        "soy sauce",
+        "sesame oil"
+      ],
+      "source": "user_favorite",
+      "notes": "Comforting noodle dish",
+      "suggestion_number": 15,
+      "week_date": "2025-07-30",
+      "suggested_date": "2025-07-30T18:45:42.730574",
+      "cooking_method": "stove",
+      "equipment": [
+        "stove",
+        "pan"
+      ]
+    },
+    {
+      "id": "user_008",
+      "name": "Fish and Quinoa Bowl",
+      "protein": "fish",
+      "vegetables": [
+        "asparagus",
+        "cherry tomatoes"
+      ],
+      "starch": "quinoa",
+      "cuisine": "mediterranean",
+      "gluten_free": true,
+      "user_rating": 5,
+      "ingredients": [
+        "white fish",
+        "quinoa",
+        "asparagus",
+        "cherry tomatoes",
+        "lemon",
+        "olive oil"
+      ],
+      "source": "user_favorite",
+      "notes": "Light and fresh",
+      "suggestion_number": 13,
+      "week_date": "2025-07-30",
+      "suggested_date": "2025-07-30T18:45:42.730571",
+      "cooking_method": "stove",
+      "equipment": [
+        "stove",
+        "pan"
+      ]
+    }
+  ],
+  "user_preferences": {
+    "favorite_proteins": {
+      "chicken": 2,
+      "salmon": 1,
+      "beef": 1,
+      "shrimp": 1,
+      "turkey": 1,
+      "pork": 1,
+      "fish": 1
+    },
+    "favorite_vegetables": {
+      "broccoli": 2,
+      "carrots": 2,
+      "bell peppers": 2,
+      "tomatoes": 1,
+      "cucumbers": 1,
+      "olives": 1,
+      "snap peas": 1,
+      "onions": 2,
+      "zucchini": 1,
+      "sweet potatoes": 1,
+      "green beans": 1,
+      "bok choy": 1,
+      "mushrooms": 1,
+      "asparagus": 1,
+      "cherry tomatoes": 1
+    },
+    "favorite_starches": {
+      "rice": 4,
+      "quinoa": 2,
+      "sweet potato": 1,
+      "rice noodles": 1
+    },
+    "favorite_cuisines": {
+      "asian": 5,
+      "mediterranean": 2,
+      "american": 1
+    },
+    "common_ingredients": {
+      "chicken breast": 2,
+      "broccoli": 2,
+      "carrots": 2,
+      "rice": 4,
+      "soy sauce": 2,
+      "garlic": 3,
+      "ginger": 2,
+      "salmon fillet": 1,
+      "bell peppers": 2,
+      "teriyaki sauce": 1,
+      "sesame oil": 2,
+      "quinoa": 2,
+      "tomatoes": 1,
+      "cucumbers": 1,
+      "olives": 1,
+      "feta cheese": 1,
+      "olive oil": 2,
+      "beef strips": 1,
+      "snap peas": 1,
+      "onions": 3,
+      "stir fry sauce": 1,
+      "shrimp": 1,
+      "zucchini": 1,
+      "ground turkey": 1,
+      "sweet potatoes": 1,
+      "green beans": 1,
+      "herbs": 1,
+      "pork tenderloin": 1,
+      "rice noodles": 1,
+      "bok choy": 1,
+      "mushrooms": 1,
+      "white fish": 1,
+      "asparagus": 1,
+      "cherry tomatoes": 1,
+      "lemon": 1
+    },
+    "cooking_styles": []
+  },
+  "recipe_history": {
+    "suggested_recipes": [],
+    "selected_recipes": [
+      {
+        "recipe_id": "user_001",
+        "week_date": "2025-07-30",
+        "selected_date": "2025-07-30T18:36:50.174417"
+      },
+      {
+        "recipe_id": "user_002",
+        "week_date": "2025-07-30",
+        "selected_date": "2025-07-30T18:36:50.175988"
+      },
+      {
+        "recipe_id": "user_003",
+        "week_date": "2025-07-30",
+        "selected_date": "2025-07-30T18:36:50.178029"
+      },
+      {
+        "recipe_id": "user_004",
+        "week_date": "2025-07-30",
+        "selected_date": "2025-07-30T18:36:50.179701"
+      }
+    ],
+    "last_update": "2025-07-30T18:30:39.260672",
+    "weekly_suggestions": [
+      {
+        "week_date": "2025-07-30",
+        "suggestions": [
+          {
+            "name": "Mongolian Beef with Broccoli",
+            "url": "https://unboundwellness.com/mongolian-beef-stir-fry/",
+            "protein": "beef",
+            "vegetables": [
+              "broccoli",
+              "green onions"
+            ],
+            "starch": "rice",
+            "cuisine": "asian",
+            "gluten_free": true,
+            "ingredients": [
+              "beef strips",
+              "broccoli",
+              "green onions",
+              "rice",
+              "coconut aminos",
+              "garlic",
+              "ginger"
+            ],
+            "prep_time": 20,
+            "difficulty": "easy",
+            "suggestion_number": 1,
+            "week_date": "2025-07-30",
+            "suggested_date": "2025-07-30T18:33:50.429173"
+          },
+          {
+            "name": "Coconut Chicken Rice Bowl",
+            "url": "https://www.skinnytaste.com/coconut-chicken-rice-bowl/",
+            "protein": "chicken",
+            "vegetables": [
+              "broccoli",
+              "carrots",
+              "snap peas"
+            ],
+            "starch": "rice",
+            "cuisine": "asian",
+            "gluten_free": true,
+            "ingredients": [
+              "chicken breast",
+              "coconut milk",
+              "rice",
+              "broccoli",
+              "carrots",
+              "snap peas",
+              "garlic",
+              "ginger"
+            ],
+            "prep_time": 30,
+            "difficulty": "easy",
+            "suggestion_number": 2,
+            "week_date": "2025-07-30",
+            "suggested_date": "2025-07-30T18:33:50.429185"
+          },
+          {
+            "id": "user_008",
+            "name": "Fish and Quinoa Bowl",
+            "protein": "fish",
+            "vegetables": [
+              "asparagus",
+              "cherry tomatoes"
+            ],
+            "starch": "quinoa",
+            "cuisine": "mediterranean",
+            "gluten_free": true,
+            "user_rating": 5,
+            "ingredients": [
+              "white fish",
+              "quinoa",
+              "asparagus",
+              "cherry tomatoes",
+              "lemon",
+              "olive oil"
+            ],
+            "source": "user_favorite",
+            "notes": "Light and fresh",
+            "suggestion_number": 3,
+            "week_date": "2025-07-30",
+            "suggested_date": "2025-07-30T18:33:50.429187"
+          },
+          {
+            "id": "user_001",
+            "name": "Asian Chicken and Rice Bowl",
+            "protein": "chicken",
+            "vegetables": [
+              "broccoli",
+              "carrots"
+            ],
+            "starch": "rice",
+            "cuisine": "asian",
+            "gluten_free": true,
+            "user_rating": 5,
+            "ingredients": [
+              "chicken breast",
+              "broccoli",
+              "carrots",
+              "rice",
+              "soy sauce",
+              "garlic",
+              "ginger"
+            ],
+            "source": "user_favorite",
+            "notes": "Colorful bowl with protein and vegetables",
+            "suggestion_number": 4,
+            "week_date": "2025-07-30",
+            "suggested_date": "2025-07-30T18:33:50.429188"
+          },
+          {
+            "name": "Mediterranean Turkey Meatballs with Quinoa",
+            "url": "https://meaningfuleats.com/mediterranean-turkey-meatballs/",
+            "protein": "turkey",
+            "vegetables": [
+              "zucchini",
+              "tomatoes",
+              "spinach"
+            ],
+            "starch": "quinoa",
+            "cuisine": "mediterranean",
+            "gluten_free": true,
+            "ingredients": [
+              "ground turkey",
+              "quinoa",
+              "zucchini",
+              "tomatoes",
+              "spinach",
+              "herbs",
+              "olive oil"
+            ],
+            "prep_time": 40,
+            "difficulty": "medium",
+            "suggestion_number": 5,
+            "week_date": "2025-07-30",
+            "suggested_date": "2025-07-30T18:33:50.429190"
+          },
+          {
+            "name": "Teriyaki Chicken Rice Bowl",
+            "url": "https://www.flavourandsavour.com/teriyaki-chicken-rice-bowls-gluten-free/",
+            "protein": "chicken",
+            "vegetables": [
+              "broccoli",
+              "bell peppers"
+            ],
+            "starch": "rice",
+            "cuisine": "asian",
+            "gluten_free": true,
+            "ingredients": [
+              "chicken breast",
+              "rice",
+              "broccoli",
+              "bell peppers",
+              "teriyaki sauce",
+              "sesame oil"
+            ],
+            "prep_time": 25,
+            "difficulty": "easy",
+            "suggestion_number": 6,
+            "week_date": "2025-07-30",
+            "suggested_date": "2025-07-30T18:33:50.429191"
+          },
+          {
+            "name": "Mediterranean Salmon Quinoa Bowl",
+            "url": "https://www.jessicagavin.com/mediterranean-spiced-salmon-and-vegetable-quinoa/",
+            "protein": "salmon",
+            "vegetables": [
+              "zucchini",
+              "cherry tomatoes",
+              "olives"
+            ],
+            "starch": "quinoa",
+            "cuisine": "mediterranean",
+            "gluten_free": true,
+            "ingredients": [
+              "salmon fillet",
+              "quinoa",
+              "zucchini",
+              "cherry tomatoes",
+              "olives",
+              "lemon",
+              "olive oil"
+            ],
+            "prep_time": 35,
+            "difficulty": "medium",
+            "suggestion_number": 7,
+            "week_date": "2025-07-30",
+            "suggested_date": "2025-07-30T18:33:50.429193"
+          },
+          {
+            "name": "Gluten-Free Beef and Broccoli Stir Fry",
+            "url": "https://www.faithfullyglutenfree.com/gluten-free-beef-and-broccoli-stir-fry/",
+            "protein": "beef",
+            "vegetables": [
+              "broccoli",
+              "onions"
+            ],
+            "starch": "rice",
+            "cuisine": "asian",
+            "gluten_free": true,
+            "ingredients": [
+              "beef strips",
+              "broccoli",
+              "onions",
+              "rice",
+              "gluten-free soy sauce",
+              "garlic",
+              "ginger"
+            ],
+            "prep_time": 20,
+            "difficulty": "easy",
+            "suggestion_number": 8,
+            "week_date": "2025-07-30",
+            "suggested_date": "2025-07-30T18:33:50.429197"
+          },
+          {
+            "name": "Buffalo Chicken Rice Bowl",
+            "url": "https://www.maryswholelife.com/buffalo-chicken-rice-bowls/",
+            "protein": "chicken",
+            "vegetables": [
+              "celery",
+              "carrots",
+              "tomatoes"
+            ],
+            "starch": "rice",
+            "cuisine": "american",
+            "gluten_free": true,
+            "ingredients": [
+              "chicken breast",
+              "rice",
+              "celery",
+              "carrots",
+              "tomatoes",
+              "buffalo sauce",
+              "blue cheese"
+            ],
+            "prep_time": 30,
+            "difficulty": "easy",
+            "suggestion_number": 9,
+            "week_date": "2025-07-30",
+            "suggested_date": "2025-07-30T18:33:50.429201"
+          },
+          {
+            "name": "Pork Tenderloin with Quinoa Pilaf",
+            "url": "https://grainfreetable.com/pork-tenderloin-quinoa/",
+            "protein": "pork",
+            "vegetables": [
+              "brussels sprouts",
+              "carrots"
+            ],
+            "starch": "quinoa",
+            "cuisine": "american",
+            "gluten_free": true,
+            "ingredients": [
+              "pork tenderloin",
+              "quinoa",
+              "brussels sprouts",
+              "carrots",
+              "herbs",
+              "olive oil"
+            ],
+            "prep_time": 45,
+            "difficulty": "medium",
+            "suggestion_number": 10,
+            "week_date": "2025-07-30",
+            "suggested_date": "2025-07-30T18:33:50.429203"
+          },
+          {
+            "name": "Spicy Beef and Vegetable Stir Fry",
+            "url": "https://glutenfreeandmore.com/gluten-free-spicy-beef-vegetable-stir-fry/",
+            "protein": "beef",
+            "vegetables": [
+              "bell peppers",
+              "snap peas",
+              "carrots"
+            ],
+            "starch": "rice",
+            "cuisine": "asian",
+            "gluten_free": true,
+            "ingredients": [
+              "beef strips",
+              "bell peppers",
+              "snap peas",
+              "carrots",
+              "rice",
+              "chili sauce",
+              "garlic"
+            ],
+            "prep_time": 25,
+            "difficulty": "medium",
+            "suggestion_number": 11,
+            "week_date": "2025-07-30",
+            "suggested_date": "2025-07-30T18:33:50.429204"
+          },
+          {
+            "name": "Thai Basil Chicken with Rice",
+            "url": "https://www.mamaknowsglutenfree.com/thai-basil-chicken/",
+            "protein": "chicken",
+            "vegetables": [
+              "bell peppers",
+              "onions",
+              "basil"
+            ],
+            "starch": "rice",
+            "cuisine": "thai",
+            "gluten_free": true,
+            "ingredients": [
+              "chicken breast",
+              "rice",
+              "bell peppers",
+              "onions",
+              "thai basil",
+              "fish sauce",
+              "chili"
+            ],
+            "prep_time": 25,
+            "difficulty": "medium",
+            "suggestion_number": 12,
+            "week_date": "2025-07-30",
+            "suggested_date": "2025-07-30T18:33:50.429206"
+          },
+          {
+            "id": "user_002",
+            "name": "Teriyaki Salmon with Vegetables",
+            "protein": "salmon",
+            "vegetables": [
+              "broccoli",
+              "bell peppers"
+            ],
+            "starch": "rice",
+            "cuisine": "asian",
+            "gluten_free": true,
+            "user_rating": 5,
+            "ingredients": [
+              "salmon fillet",
+              "broccoli",
+              "bell peppers",
+              "rice",
+              "teriyaki sauce",
+              "sesame oil"
+            ],
+            "source": "user_favorite",
+            "notes": "Glazed salmon with colorful vegetables",
+            "suggestion_number": 13,
+            "week_date": "2025-07-30",
+            "suggested_date": "2025-07-30T18:33:50.429207"
+          },
+          {
+            "name": "Shrimp and Vegetable Curry with Rice",
+            "url": "https://theloopywhisk.com/shrimp-curry/",
+            "protein": "shrimp",
+            "vegetables": [
+              "bell peppers",
+              "spinach",
+              "onions"
+            ],
+            "starch": "rice",
+            "cuisine": "indian",
+            "gluten_free": true,
+            "ingredients": [
+              "shrimp",
+              "rice",
+              "bell peppers",
+              "spinach",
+              "onions",
+              "coconut milk",
+              "curry spices"
+            ],
+            "prep_time": 30,
+            "difficulty": "medium",
+            "suggestion_number": 14,
+            "week_date": "2025-07-30",
+            "suggested_date": "2025-07-30T18:33:50.429208"
+          },
+          {
+            "id": "user_007",
+            "name": "Pork and Rice Noodle Bowl",
+            "protein": "pork",
+            "vegetables": [
+              "bok choy",
+              "mushrooms"
+            ],
+            "starch": "rice noodles",
+            "cuisine": "asian",
+            "gluten_free": true,
+            "user_rating": 5,
+            "ingredients": [
+              "pork tenderloin",
+              "rice noodles",
+              "bok choy",
+              "mushrooms",
+              "soy sauce",
+              "sesame oil"
+            ],
+            "source": "user_favorite",
+            "notes": "Comforting noodle dish",
+            "suggestion_number": 15,
+            "week_date": "2025-07-30",
+            "suggested_date": "2025-07-30T18:33:50.429209"
+          }
+        ],
+        "generated_date": "2025-07-30T18:33:50.429212"
+      },
+      {
+        "week_date": "2025-07-30",
+        "suggestions": [
+          {
+            "id": "user_008",
+            "name": "Fish and Quinoa Bowl",
+            "protein": "fish",
+            "vegetables": [
+              "asparagus",
+              "cherry tomatoes"
+            ],
+            "starch": "quinoa",
+            "cuisine": "mediterranean",
+            "gluten_free": true,
+            "user_rating": 5,
+            "ingredients": [
+              "white fish",
+              "quinoa",
+              "asparagus",
+              "cherry tomatoes",
+              "lemon",
+              "olive oil"
+            ],
+            "source": "user_favorite",
+            "notes": "Light and fresh",
+            "suggestion_number": 6,
+            "week_date": "2025-07-30",
+            "suggested_date": "2025-07-30T18:42:15.739527",
+            "cooking_method": "stove",
+            "equipment": [
+              "stove",
+              "pan"
+            ]
+          },
+          {
+            "id": "user_001",
+            "name": "Asian Chicken and Rice Bowl",
+            "protein": "chicken",
+            "vegetables": [
+              "broccoli",
+              "carrots"
+            ],
+            "starch": "rice",
+            "cuisine": "asian",
+            "gluten_free": true,
+            "user_rating": 5,
+            "ingredients": [
+              "chicken breast",
+              "broccoli",
+              "carrots",
+              "rice",
+              "soy sauce",
+              "garlic",
+              "ginger"
+            ],
+            "source": "user_favorite",
+            "notes": "Colorful bowl with protein and vegetables",
+            "suggestion_number": 2,
+            "week_date": "2025-07-30",
+            "suggested_date": "2025-07-30T18:41:55.686294",
+            "cooking_method": "stove",
+            "equipment": [
+              "stove",
+              "pan"
+            ]
+          },
+          {
+            "name": "Buffalo Chicken Rice Bowl",
+            "url": "https://www.maryswholelife.com/buffalo-chicken-rice-bowls/",
+            "protein": "chicken",
+            "vegetables": [
+              "celery",
+              "carrots",
+              "tomatoes"
+            ],
+            "starch": "rice",
+            "cuisine": "american",
+            "gluten_free": true,
+            "ingredients": [
+              "chicken breast",
+              "rice",
+              "celery",
+              "carrots",
+              "tomatoes",
+              "buffalo sauce",
+              "blue cheese"
+            ],
+            "prep_time": 30,
+            "difficulty": "easy",
+            "suggestion_number": 3,
+            "week_date": "2025-07-30",
+            "suggested_date": "2025-07-30T18:42:15.739522"
+          },
+          {
+            "name": "Coconut Chicken Rice Bowl",
+            "url": "https://www.skinnytaste.com/coconut-chicken-rice-bowl/",
+            "protein": "chicken",
+            "vegetables": [
+              "broccoli",
+              "carrots",
+              "snap peas"
+            ],
+            "starch": "rice",
+            "cuisine": "asian",
+            "gluten_free": true,
+            "ingredients": [
+              "chicken breast",
+              "coconut milk",
+              "rice",
+              "broccoli",
+              "carrots",
+              "snap peas",
+              "garlic",
+              "ginger"
+            ],
+            "prep_time": 30,
+            "difficulty": "easy",
+            "suggestion_number": 1,
+            "week_date": "2025-07-30",
+            "suggested_date": "2025-07-30T18:42:15.739512"
+          },
+          {
+            "name": "Mongolian Beef with Broccoli",
+            "url": "https://unboundwellness.com/mongolian-beef-stir-fry/",
+            "protein": "beef",
+            "vegetables": [
+              "broccoli",
+              "green onions"
+            ],
+            "starch": "rice",
+            "cuisine": "asian",
+            "gluten_free": true,
+            "ingredients": [
+              "beef strips",
+              "broccoli",
+              "green onions",
+              "rice",
+              "coconut aminos",
+              "garlic",
+              "ginger"
+            ],
+            "prep_time": 20,
+            "difficulty": "easy",
+            "suggestion_number": 7,
+            "week_date": "2025-07-30",
+            "suggested_date": "2025-07-30T18:42:15.739529"
+          },
+          {
+            "name": "Mediterranean Turkey Meatballs with Quinoa",
+            "url": "https://meaningfuleats.com/mediterranean-turkey-meatballs/",
+            "protein": "turkey",
+            "vegetables": [
+              "zucchini",
+              "tomatoes",
+              "spinach"
+            ],
+            "starch": "quinoa",
+            "cuisine": "mediterranean",
+            "gluten_free": true,
+            "ingredients": [
+              "ground turkey",
+              "quinoa",
+              "zucchini",
+              "tomatoes",
+              "spinach",
+              "herbs",
+              "olive oil"
+            ],
+            "prep_time": 40,
+            "difficulty": "medium",
+            "suggestion_number": 9,
+            "week_date": "2025-07-30",
+            "suggested_date": "2025-07-30T18:42:15.739531"
+          },
+          {
+            "name": "Gluten-Free Beef and Broccoli Stir Fry",
+            "url": "https://www.faithfullyglutenfree.com/gluten-free-beef-and-broccoli-stir-fry/",
+            "protein": "beef",
+            "vegetables": [
+              "broccoli",
+              "onions"
+            ],
+            "starch": "rice",
+            "cuisine": "asian",
+            "gluten_free": true,
+            "ingredients": [
+              "beef strips",
+              "broccoli",
+              "onions",
+              "rice",
+              "gluten-free soy sauce",
+              "garlic",
+              "ginger"
+            ],
+            "prep_time": 20,
+            "difficulty": "easy",
+            "suggestion_number": 13,
+            "week_date": "2025-07-30",
+            "suggested_date": "2025-07-30T18:42:15.739538"
+          },
+          {
+            "name": "Teriyaki Chicken Rice Bowl",
+            "url": "https://www.flavourandsavour.com/teriyaki-chicken-rice-bowls-gluten-free/",
+            "protein": "chicken",
+            "vegetables": [
+              "broccoli",
+              "bell peppers"
+            ],
+            "starch": "rice",
+            "cuisine": "asian",
+            "gluten_free": true,
+            "ingredients": [
+              "chicken breast",
+              "rice",
+              "broccoli",
+              "bell peppers",
+              "teriyaki sauce",
+              "sesame oil"
+            ],
+            "prep_time": 25,
+            "difficulty": "easy",
+            "suggestion_number": 14,
+            "week_date": "2025-07-30",
+            "suggested_date": "2025-07-30T18:42:15.739539"
+          },
+          {
+            "name": "Mediterranean Salmon Quinoa Bowl",
+            "url": "https://www.jessicagavin.com/mediterranean-spiced-salmon-and-vegetable-quinoa/",
+            "protein": "salmon",
+            "vegetables": [
+              "zucchini",
+              "cherry tomatoes",
+              "olives"
+            ],
+            "starch": "quinoa",
+            "cuisine": "mediterranean",
+            "gluten_free": true,
+            "ingredients": [
+              "salmon fillet",
+              "quinoa",
+              "zucchini",
+              "cherry tomatoes",
+              "olives",
+              "lemon",
+              "olive oil"
+            ],
+            "prep_time": 35,
+            "difficulty": "medium",
+            "suggestion_number": 11,
+            "week_date": "2025-07-30",
+            "suggested_date": "2025-07-30T18:42:15.739535"
+          },
+          {
+            "name": "Spicy Beef and Vegetable Stir Fry",
+            "url": "https://glutenfreeandmore.com/gluten-free-spicy-beef-vegetable-stir-fry/",
+            "protein": "beef",
+            "vegetables": [
+              "bell peppers",
+              "snap peas",
+              "carrots"
+            ],
+            "starch": "rice",
+            "cuisine": "asian",
+            "gluten_free": true,
+            "ingredients": [
+              "beef strips",
+              "bell peppers",
+              "snap peas",
+              "carrots",
+              "rice",
+              "chili sauce",
+              "garlic"
+            ],
+            "prep_time": 25,
+            "difficulty": "medium",
+            "suggestion_number": 2,
+            "week_date": "2025-07-30",
+            "suggested_date": "2025-07-30T18:42:15.739519"
+          },
+          {
+            "id": "user_002",
+            "name": "Teriyaki Salmon with Vegetables",
+            "protein": "salmon",
+            "vegetables": [
+              "broccoli",
+              "bell peppers"
+            ],
+            "starch": "rice",
+            "cuisine": "asian",
+            "gluten_free": true,
+            "user_rating": 5,
+            "ingredients": [
+              "salmon fillet",
+              "broccoli",
+              "bell peppers",
+              "rice",
+              "teriyaki sauce",
+              "sesame oil"
+            ],
+            "source": "user_favorite",
+            "notes": "Glazed salmon with colorful vegetables",
+            "suggestion_number": 11,
+            "week_date": "2025-07-30",
+            "suggested_date": "2025-07-30T18:41:55.686319",
+            "cooking_method": "oven",
+            "equipment": [
+              "oven"
+            ],
+            "alternative_methods": [
+              "grill",
+              "air_fryer"
+            ]
+          },
+          {
+            "name": "Pork Tenderloin with Quinoa Pilaf",
+            "url": "https://grainfreetable.com/pork-tenderloin-quinoa/",
+            "protein": "pork",
+            "vegetables": [
+              "brussels sprouts",
+              "carrots"
+            ],
+            "starch": "quinoa",
+            "cuisine": "american",
+            "gluten_free": true,
+            "ingredients": [
+              "pork tenderloin",
+              "quinoa",
+              "brussels sprouts",
+              "carrots",
+              "herbs",
+              "olive oil"
+            ],
+            "prep_time": 45,
+            "difficulty": "medium",
+            "suggestion_number": 12,
+            "week_date": "2025-07-30",
+            "suggested_date": "2025-07-30T18:42:15.739536"
+          },
+          {
+            "id": "user_005",
+            "name": "Shrimp and Vegetable Bowl",
+            "protein": "shrimp",
+            "vegetables": [
+              "zucchini",
+              "bell peppers",
+              "onions"
+            ],
+            "starch": "rice",
+            "cuisine": "asian",
+            "gluten_free": true,
+            "user_rating": 5,
+            "ingredients": [
+              "shrimp",
+              "zucchini",
+              "bell peppers",
+              "onions",
+              "rice",
+              "garlic",
+              "ginger"
+            ],
+            "source": "user_favorite",
+            "notes": "Light and healthy seafood dish",
+            "cooking_method": "stove",
+            "equipment": [
+              "stove",
+              "pan"
+            ],
+            "suggestion_number": 5,
+            "week_date": "2025-07-30",
+            "suggested_date": "2025-07-30T18:42:15.739525"
+          },
+          {
+            "name": "Thai Basil Chicken with Rice",
+            "url": "https://www.mamaknowsglutenfree.com/thai-basil-chicken/",
+            "protein": "chicken",
+            "vegetables": [
+              "bell peppers",
+              "onions",
+              "basil"
+            ],
+            "starch": "rice",
+            "cuisine": "thai",
+            "gluten_free": true,
+            "ingredients": [
+              "chicken breast",
+              "rice",
+              "bell peppers",
+              "onions",
+              "thai basil",
+              "fish sauce",
+              "chili"
+            ],
+            "prep_time": 25,
+            "difficulty": "medium",
+            "suggestion_number": 15,
+            "week_date": "2025-07-30",
+            "suggested_date": "2025-07-30T18:42:15.739541"
+          },
+          {
+            "name": "Shrimp and Vegetable Curry with Rice",
+            "url": "https://theloopywhisk.com/shrimp-curry/",
+            "protein": "shrimp",
+            "vegetables": [
+              "bell peppers",
+              "spinach",
+              "onions"
+            ],
+            "starch": "rice",
+            "cuisine": "indian",
+            "gluten_free": true,
+            "ingredients": [
+              "shrimp",
+              "rice",
+              "bell peppers",
+              "spinach",
+              "onions",
+              "coconut milk",
+              "curry spices"
+            ],
+            "prep_time": 30,
+            "difficulty": "medium",
+            "suggestion_number": 8,
+            "week_date": "2025-07-30",
+            "suggested_date": "2025-07-30T18:42:15.739530"
+          }
+        ],
+        "generated_date": "2025-07-30T18:41:55.686329"
+      },
+      {
+        "week_date": "2025-07-30",
+        "suggestions": [
+          {
+            "name": "Coconut Chicken Rice Bowl",
+            "url": "https://www.skinnytaste.com/coconut-chicken-rice-bowl/",
+            "protein": "chicken",
+            "vegetables": [
+              "broccoli",
+              "carrots",
+              "snap peas"
+            ],
+            "starch": "rice",
+            "cuisine": "asian",
+            "gluten_free": true,
+            "ingredients": [
+              "chicken breast",
+              "coconut milk",
+              "rice",
+              "broccoli",
+              "carrots",
+              "snap peas",
+              "garlic",
+              "ginger"
+            ],
+            "prep_time": 30,
+            "difficulty": "easy",
+            "suggestion_number": 1,
+            "week_date": "2025-07-30",
+            "suggested_date": "2025-07-30T18:42:15.739512"
+          },
+          {
+            "name": "Spicy Beef and Vegetable Stir Fry",
+            "url": "https://glutenfreeandmore.com/gluten-free-spicy-beef-vegetable-stir-fry/",
+            "protein": "beef",
+            "vegetables": [
+              "bell peppers",
+              "snap peas",
+              "carrots"
+            ],
+            "starch": "rice",
+            "cuisine": "asian",
+            "gluten_free": true,
+            "ingredients": [
+              "beef strips",
+              "bell peppers",
+              "snap peas",
+              "carrots",
+              "rice",
+              "chili sauce",
+              "garlic"
+            ],
+            "prep_time": 25,
+            "difficulty": "medium",
+            "suggestion_number": 2,
+            "week_date": "2025-07-30",
+            "suggested_date": "2025-07-30T18:42:15.739519"
+          },
+          {
+            "name": "Buffalo Chicken Rice Bowl",
+            "url": "https://www.maryswholelife.com/buffalo-chicken-rice-bowls/",
+            "protein": "chicken",
+            "vegetables": [
+              "celery",
+              "carrots",
+              "tomatoes"
+            ],
+            "starch": "rice",
+            "cuisine": "american",
+            "gluten_free": true,
+            "ingredients": [
+              "chicken breast",
+              "rice",
+              "celery",
+              "carrots",
+              "tomatoes",
+              "buffalo sauce",
+              "blue cheese"
+            ],
+            "prep_time": 30,
+            "difficulty": "easy",
+            "suggestion_number": 3,
+            "week_date": "2025-07-30",
+            "suggested_date": "2025-07-30T18:42:15.739522"
+          },
+          {
+            "id": "user_006",
+            "name": "Turkey and Sweet Potato Bowl",
+            "protein": "turkey",
+            "vegetables": [
+              "sweet potatoes",
+              "green beans"
+            ],
+            "starch": "sweet potato",
+            "cuisine": "american",
+            "gluten_free": true,
+            "user_rating": 5,
+            "ingredients": [
+              "ground turkey",
+              "sweet potatoes",
+              "green beans",
+              "onions",
+              "herbs"
+            ],
+            "source": "user_favorite",
+            "notes": "Hearty and nutritious",
+            "cooking_method": "stove",
+            "equipment": [
+              "stove",
+              "pan"
+            ],
+            "suggestion_number": 4,
+            "week_date": "2025-07-30",
+            "suggested_date": "2025-07-30T18:42:15.739523"
+          },
+          {
+            "id": "user_005",
+            "name": "Shrimp and Vegetable Bowl",
+            "protein": "shrimp",
+            "vegetables": [
+              "zucchini",
+              "bell peppers",
+              "onions"
+            ],
+            "starch": "rice",
+            "cuisine": "asian",
+            "gluten_free": true,
+            "user_rating": 5,
+            "ingredients": [
+              "shrimp",
+              "zucchini",
+              "bell peppers",
+              "onions",
+              "rice",
+              "garlic",
+              "ginger"
+            ],
+            "source": "user_favorite",
+            "notes": "Light and healthy seafood dish",
+            "cooking_method": "stove",
+            "equipment": [
+              "stove",
+              "pan"
+            ],
+            "suggestion_number": 5,
+            "week_date": "2025-07-30",
+            "suggested_date": "2025-07-30T18:42:15.739525"
+          },
+          {
+            "id": "user_008",
+            "name": "Fish and Quinoa Bowl",
+            "protein": "fish",
+            "vegetables": [
+              "asparagus",
+              "cherry tomatoes"
+            ],
+            "starch": "quinoa",
+            "cuisine": "mediterranean",
+            "gluten_free": true,
+            "user_rating": 5,
+            "ingredients": [
+              "white fish",
+              "quinoa",
+              "asparagus",
+              "cherry tomatoes",
+              "lemon",
+              "olive oil"
+            ],
+            "source": "user_favorite",
+            "notes": "Light and fresh",
+            "suggestion_number": 6,
+            "week_date": "2025-07-30",
+            "suggested_date": "2025-07-30T18:42:15.739527",
+            "cooking_method": "stove",
+            "equipment": [
+              "stove",
+              "pan"
+            ]
+          },
+          {
+            "name": "Mongolian Beef with Broccoli",
+            "url": "https://unboundwellness.com/mongolian-beef-stir-fry/",
+            "protein": "beef",
+            "vegetables": [
+              "broccoli",
+              "green onions"
+            ],
+            "starch": "rice",
+            "cuisine": "asian",
+            "gluten_free": true,
+            "ingredients": [
+              "beef strips",
+              "broccoli",
+              "green onions",
+              "rice",
+              "coconut aminos",
+              "garlic",
+              "ginger"
+            ],
+            "prep_time": 20,
+            "difficulty": "easy",
+            "suggestion_number": 7,
+            "week_date": "2025-07-30",
+            "suggested_date": "2025-07-30T18:42:15.739529"
+          },
+          {
+            "name": "Shrimp and Vegetable Curry with Rice",
+            "url": "https://theloopywhisk.com/shrimp-curry/",
+            "protein": "shrimp",
+            "vegetables": [
+              "bell peppers",
+              "spinach",
+              "onions"
+            ],
+            "starch": "rice",
+            "cuisine": "indian",
+            "gluten_free": true,
+            "ingredients": [
+              "shrimp",
+              "rice",
+              "bell peppers",
+              "spinach",
+              "onions",
+              "coconut milk",
+              "curry spices"
+            ],
+            "prep_time": 30,
+            "difficulty": "medium",
+            "suggestion_number": 8,
+            "week_date": "2025-07-30",
+            "suggested_date": "2025-07-30T18:42:15.739530"
+          },
+          {
+            "name": "Mediterranean Turkey Meatballs with Quinoa",
+            "url": "https://meaningfuleats.com/mediterranean-turkey-meatballs/",
+            "protein": "turkey",
+            "vegetables": [
+              "zucchini",
+              "tomatoes",
+              "spinach"
+            ],
+            "starch": "quinoa",
+            "cuisine": "mediterranean",
+            "gluten_free": true,
+            "ingredients": [
+              "ground turkey",
+              "quinoa",
+              "zucchini",
+              "tomatoes",
+              "spinach",
+              "herbs",
+              "olive oil"
+            ],
+            "prep_time": 40,
+            "difficulty": "medium",
+            "suggestion_number": 9,
+            "week_date": "2025-07-30",
+            "suggested_date": "2025-07-30T18:42:15.739531"
+          },
+          {
+            "id": "user_004",
+            "name": "Beef Stir Fry with Rice",
+            "protein": "beef",
+            "vegetables": [
+              "snap peas",
+              "carrots",
+              "onions"
+            ],
+            "starch": "rice",
+            "cuisine": "asian",
+            "gluten_free": true,
+            "user_rating": 5,
+            "ingredients": [
+              "beef strips",
+              "snap peas",
+              "carrots",
+              "onions",
+              "rice",
+              "stir fry sauce",
+              "garlic"
+            ],
+            "source": "user_favorite",
+            "notes": "Quick and flavorful stir fry",
+            "cooking_method": "stove",
+            "equipment": [
+              "stove",
+              "pan"
+            ],
+            "suggestion_number": 10,
+            "week_date": "2025-07-30",
+            "suggested_date": "2025-07-30T18:42:15.739533"
+          },
+          {
+            "name": "Mediterranean Salmon Quinoa Bowl",
+            "url": "https://www.jessicagavin.com/mediterranean-spiced-salmon-and-vegetable-quinoa/",
+            "protein": "salmon",
+            "vegetables": [
+              "zucchini",
+              "cherry tomatoes",
+              "olives"
+            ],
+            "starch": "quinoa",
+            "cuisine": "mediterranean",
+            "gluten_free": true,
+            "ingredients": [
+              "salmon fillet",
+              "quinoa",
+              "zucchini",
+              "cherry tomatoes",
+              "olives",
+              "lemon",
+              "olive oil"
+            ],
+            "prep_time": 35,
+            "difficulty": "medium",
+            "suggestion_number": 11,
+            "week_date": "2025-07-30",
+            "suggested_date": "2025-07-30T18:42:15.739535"
+          },
+          {
+            "name": "Pork Tenderloin with Quinoa Pilaf",
+            "url": "https://grainfreetable.com/pork-tenderloin-quinoa/",
+            "protein": "pork",
+            "vegetables": [
+              "brussels sprouts",
+              "carrots"
+            ],
+            "starch": "quinoa",
+            "cuisine": "american",
+            "gluten_free": true,
+            "ingredients": [
+              "pork tenderloin",
+              "quinoa",
+              "brussels sprouts",
+              "carrots",
+              "herbs",
+              "olive oil"
+            ],
+            "prep_time": 45,
+            "difficulty": "medium",
+            "suggestion_number": 12,
+            "week_date": "2025-07-30",
+            "suggested_date": "2025-07-30T18:42:15.739536"
+          },
+          {
+            "name": "Gluten-Free Beef and Broccoli Stir Fry",
+            "url": "https://www.faithfullyglutenfree.com/gluten-free-beef-and-broccoli-stir-fry/",
+            "protein": "beef",
+            "vegetables": [
+              "broccoli",
+              "onions"
+            ],
+            "starch": "rice",
+            "cuisine": "asian",
+            "gluten_free": true,
+            "ingredients": [
+              "beef strips",
+              "broccoli",
+              "onions",
+              "rice",
+              "gluten-free soy sauce",
+              "garlic",
+              "ginger"
+            ],
+            "prep_time": 20,
+            "difficulty": "easy",
+            "suggestion_number": 13,
+            "week_date": "2025-07-30",
+            "suggested_date": "2025-07-30T18:42:15.739538"
+          },
+          {
+            "name": "Teriyaki Chicken Rice Bowl",
+            "url": "https://www.flavourandsavour.com/teriyaki-chicken-rice-bowls-gluten-free/",
+            "protein": "chicken",
+            "vegetables": [
+              "broccoli",
+              "bell peppers"
+            ],
+            "starch": "rice",
+            "cuisine": "asian",
+            "gluten_free": true,
+            "ingredients": [
+              "chicken breast",
+              "rice",
+              "broccoli",
+              "bell peppers",
+              "teriyaki sauce",
+              "sesame oil"
+            ],
+            "prep_time": 25,
+            "difficulty": "easy",
+            "suggestion_number": 14,
+            "week_date": "2025-07-30",
+            "suggested_date": "2025-07-30T18:42:15.739539"
+          },
+          {
+            "name": "Thai Basil Chicken with Rice",
+            "url": "https://www.mamaknowsglutenfree.com/thai-basil-chicken/",
+            "protein": "chicken",
+            "vegetables": [
+              "bell peppers",
+              "onions",
+              "basil"
+            ],
+            "starch": "rice",
+            "cuisine": "thai",
+            "gluten_free": true,
+            "ingredients": [
+              "chicken breast",
+              "rice",
+              "bell peppers",
+              "onions",
+              "thai basil",
+              "fish sauce",
+              "chili"
+            ],
+            "prep_time": 25,
+            "difficulty": "medium",
+            "suggestion_number": 15,
+            "week_date": "2025-07-30",
+            "suggested_date": "2025-07-30T18:42:15.739541"
+          }
+        ],
+        "generated_date": "2025-07-30T18:42:15.739543"
+      },
+      {
+        "week_date": "2025-07-30",
+        "suggestions": [
+          {
+            "name": "Thai Basil Chicken with Rice",
+            "url": "https://www.mamaknowsglutenfree.com/thai-basil-chicken/",
+            "protein": "chicken",
+            "vegetables": [
+              "bell peppers",
+              "onions",
+              "basil"
+            ],
+            "starch": "rice",
+            "cuisine": "thai",
+            "gluten_free": true,
+            "ingredients": [
+              "chicken breast",
+              "rice",
+              "bell peppers",
+              "onions",
+              "thai basil",
+              "fish sauce",
+              "chili"
+            ],
+            "prep_time": 25,
+            "difficulty": "medium",
+            "suggestion_number": 1,
+            "week_date": "2025-07-30",
+            "suggested_date": "2025-07-30T18:45:08.979870"
+          },
+          {
+            "id": "user_006",
+            "name": "Turkey and Sweet Potato Bowl",
+            "protein": "turkey",
+            "vegetables": [
+              "sweet potatoes",
+              "green beans"
+            ],
+            "starch": "sweet potato",
+            "cuisine": "american",
+            "gluten_free": true,
+            "user_rating": 5,
+            "ingredients": [
+              "ground turkey",
+              "sweet potatoes",
+              "green beans",
+              "onions",
+              "herbs"
+            ],
+            "source": "user_favorite",
+            "notes": "Hearty and nutritious",
+            "cooking_method": "stove",
+            "equipment": [
+              "stove",
+              "pan"
+            ],
+            "suggestion_number": 2,
+            "week_date": "2025-07-30",
+            "suggested_date": "2025-07-30T18:45:08.979883"
+          },
+          {
+            "name": "Shrimp and Vegetable Curry with Rice",
+            "url": "https://theloopywhisk.com/shrimp-curry/",
+            "protein": "shrimp",
+            "vegetables": [
+              "bell peppers",
+              "spinach",
+              "onions"
+            ],
+            "starch": "rice",
+            "cuisine": "indian",
+            "gluten_free": true,
+            "ingredients": [
+              "shrimp",
+              "rice",
+              "bell peppers",
+              "spinach",
+              "onions",
+              "coconut milk",
+              "curry spices"
+            ],
+            "prep_time": 30,
+            "difficulty": "medium",
+            "suggestion_number": 3,
+            "week_date": "2025-07-30",
+            "suggested_date": "2025-07-30T18:45:08.979885"
+          },
+          {
+            "name": "Pork Tenderloin with Quinoa Pilaf",
+            "url": "https://grainfreetable.com/pork-tenderloin-quinoa/",
+            "protein": "pork",
+            "vegetables": [
+              "brussels sprouts",
+              "carrots"
+            ],
+            "starch": "quinoa",
+            "cuisine": "american",
+            "gluten_free": true,
+            "ingredients": [
+              "pork tenderloin",
+              "quinoa",
+              "brussels sprouts",
+              "carrots",
+              "herbs",
+              "olive oil"
+            ],
+            "prep_time": 45,
+            "difficulty": "medium",
+            "suggestion_number": 4,
+            "week_date": "2025-07-30",
+            "suggested_date": "2025-07-30T18:45:08.979887"
+          },
+          {
+            "name": "Coconut Chicken Rice Bowl",
+            "url": "https://www.skinnytaste.com/coconut-chicken-rice-bowl/",
+            "protein": "chicken",
+            "vegetables": [
+              "broccoli",
+              "carrots",
+              "snap peas"
+            ],
+            "starch": "rice",
+            "cuisine": "asian",
+            "gluten_free": true,
+            "ingredients": [
+              "chicken breast",
+              "coconut milk",
+              "rice",
+              "broccoli",
+              "carrots",
+              "snap peas",
+              "garlic",
+              "ginger"
+            ],
+            "prep_time": 30,
+            "difficulty": "easy",
+            "suggestion_number": 5,
+            "week_date": "2025-07-30",
+            "suggested_date": "2025-07-30T18:45:08.979888"
+          },
+          {
+            "name": "Spicy Beef and Vegetable Stir Fry",
+            "url": "https://glutenfreeandmore.com/gluten-free-spicy-beef-vegetable-stir-fry/",
+            "protein": "beef",
+            "vegetables": [
+              "bell peppers",
+              "snap peas",
+              "carrots"
+            ],
+            "starch": "rice",
+            "cuisine": "asian",
+            "gluten_free": true,
+            "ingredients": [
+              "beef strips",
+              "bell peppers",
+              "snap peas",
+              "carrots",
+              "rice",
+              "chili sauce",
+              "garlic"
+            ],
+            "prep_time": 25,
+            "difficulty": "medium",
+            "suggestion_number": 6,
+            "week_date": "2025-07-30",
+            "suggested_date": "2025-07-30T18:45:08.979890"
+          },
+          {
+            "name": "Mongolian Beef with Broccoli",
+            "url": "https://unboundwellness.com/mongolian-beef-stir-fry/",
+            "protein": "beef",
+            "vegetables": [
+              "broccoli",
+              "green onions"
+            ],
+            "starch": "rice",
+            "cuisine": "asian",
+            "gluten_free": true,
+            "ingredients": [
+              "beef strips",
+              "broccoli",
+              "green onions",
+              "rice",
+              "coconut aminos",
+              "garlic",
+              "ginger"
+            ],
+            "prep_time": 20,
+            "difficulty": "easy",
+            "suggestion_number": 7,
+            "week_date": "2025-07-30",
+            "suggested_date": "2025-07-30T18:45:08.979891"
+          },
+          {
+            "id": "user_007",
+            "name": "Pork and Rice Noodle Bowl",
+            "protein": "pork",
+            "vegetables": [
+              "bok choy",
+              "mushrooms"
+            ],
+            "starch": "rice noodles",
+            "cuisine": "asian",
+            "gluten_free": true,
+            "user_rating": 5,
+            "ingredients": [
+              "pork tenderloin",
+              "rice noodles",
+              "bok choy",
+              "mushrooms",
+              "soy sauce",
+              "sesame oil"
+            ],
+            "source": "user_favorite",
+            "notes": "Comforting noodle dish",
+            "suggestion_number": 8,
+            "week_date": "2025-07-30",
+            "suggested_date": "2025-07-30T18:45:08.979896",
+            "cooking_method": "stove",
+            "equipment": [
+              "stove",
+              "pan"
+            ]
+          },
+          {
+            "id": "user_008",
+            "name": "Fish and Quinoa Bowl",
+            "protein": "fish",
+            "vegetables": [
+              "asparagus",
+              "cherry tomatoes"
+            ],
+            "starch": "quinoa",
+            "cuisine": "mediterranean",
+            "gluten_free": true,
+            "user_rating": 5,
+            "ingredients": [
+              "white fish",
+              "quinoa",
+              "asparagus",
+              "cherry tomatoes",
+              "lemon",
+              "olive oil"
+            ],
+            "source": "user_favorite",
+            "notes": "Light and fresh",
+            "suggestion_number": 9,
+            "week_date": "2025-07-30",
+            "suggested_date": "2025-07-30T18:45:08.979897",
+            "cooking_method": "stove",
+            "equipment": [
+              "stove",
+              "pan"
+            ]
+          },
+          {
+            "name": "Gluten-Free Beef and Broccoli Stir Fry",
+            "url": "https://www.faithfullyglutenfree.com/gluten-free-beef-and-broccoli-stir-fry/",
+            "protein": "beef",
+            "vegetables": [
+              "broccoli",
+              "onions"
+            ],
+            "starch": "rice",
+            "cuisine": "asian",
+            "gluten_free": true,
+            "ingredients": [
+              "beef strips",
+              "broccoli",
+              "onions",
+              "rice",
+              "gluten-free soy sauce",
+              "garlic",
+              "ginger"
+            ],
+            "prep_time": 20,
+            "difficulty": "easy",
+            "suggestion_number": 10,
+            "week_date": "2025-07-30",
+            "suggested_date": "2025-07-30T18:45:08.979902"
+          },
+          {
+            "name": "Teriyaki Chicken Rice Bowl",
+            "url": "https://www.flavourandsavour.com/teriyaki-chicken-rice-bowls-gluten-free/",
+            "protein": "chicken",
+            "vegetables": [
+              "broccoli",
+              "bell peppers"
+            ],
+            "starch": "rice",
+            "cuisine": "asian",
+            "gluten_free": true,
+            "ingredients": [
+              "chicken breast",
+              "rice",
+              "broccoli",
+              "bell peppers",
+              "teriyaki sauce",
+              "sesame oil"
+            ],
+            "prep_time": 25,
+            "difficulty": "easy",
+            "suggestion_number": 11,
+            "week_date": "2025-07-30",
+            "suggested_date": "2025-07-30T18:45:08.979903"
+          },
+          {
+            "name": "Buffalo Chicken Rice Bowl",
+            "url": "https://www.maryswholelife.com/buffalo-chicken-rice-bowls/",
+            "protein": "chicken",
+            "vegetables": [
+              "celery",
+              "carrots",
+              "tomatoes"
+            ],
+            "starch": "rice",
+            "cuisine": "american",
+            "gluten_free": true,
+            "ingredients": [
+              "chicken breast",
+              "rice",
+              "celery",
+              "carrots",
+              "tomatoes",
+              "buffalo sauce",
+              "blue cheese"
+            ],
+            "prep_time": 30,
+            "difficulty": "easy",
+            "suggestion_number": 12,
+            "week_date": "2025-07-30",
+            "suggested_date": "2025-07-30T18:45:08.979905"
+          },
+          {
+            "id": "user_003",
+            "name": "Mediterranean Chicken Bowl",
+            "protein": "chicken",
+            "vegetables": [
+              "tomatoes",
+              "cucumbers",
+              "olives"
+            ],
+            "starch": "quinoa",
+            "cuisine": "mediterranean",
+            "gluten_free": true,
+            "user_rating": 5,
+            "ingredients": [
+              "chicken breast",
+              "quinoa",
+              "tomatoes",
+              "cucumbers",
+              "olives",
+              "feta cheese",
+              "olive oil"
+            ],
+            "source": "user_favorite",
+            "notes": "Fresh Mediterranean flavors",
+            "cooking_method": "stove",
+            "equipment": [
+              "stove",
+              "pan"
+            ],
+            "suggestion_number": 13,
+            "week_date": "2025-07-30",
+            "suggested_date": "2025-07-30T18:45:08.979906"
+          },
+          {
+            "name": "Mediterranean Turkey Meatballs with Quinoa",
+            "url": "https://meaningfuleats.com/mediterranean-turkey-meatballs/",
+            "protein": "turkey",
+            "vegetables": [
+              "zucchini",
+              "tomatoes",
+              "spinach"
+            ],
+            "starch": "quinoa",
+            "cuisine": "mediterranean",
+            "gluten_free": true,
+            "ingredients": [
+              "ground turkey",
+              "quinoa",
+              "zucchini",
+              "tomatoes",
+              "spinach",
+              "herbs",
+              "olive oil"
+            ],
+            "prep_time": 40,
+            "difficulty": "medium",
+            "suggestion_number": 14,
+            "week_date": "2025-07-30",
+            "suggested_date": "2025-07-30T18:45:08.979908"
+          },
+          {
+            "name": "Mediterranean Salmon Quinoa Bowl",
+            "url": "https://www.jessicagavin.com/mediterranean-spiced-salmon-and-vegetable-quinoa/",
+            "protein": "salmon",
+            "vegetables": [
+              "zucchini",
+              "cherry tomatoes",
+              "olives"
+            ],
+            "starch": "quinoa",
+            "cuisine": "mediterranean",
+            "gluten_free": true,
+            "ingredients": [
+              "salmon fillet",
+              "quinoa",
+              "zucchini",
+              "cherry tomatoes",
+              "olives",
+              "lemon",
+              "olive oil"
+            ],
+            "prep_time": 35,
+            "difficulty": "medium",
+            "suggestion_number": 15,
+            "week_date": "2025-07-30",
+            "suggested_date": "2025-07-30T18:45:08.979909"
+          }
+        ],
+        "generated_date": "2025-07-30T18:45:08.979912"
+      },
+      {
+        "week_date": "2025-07-30",
+        "suggestions": [
+          {
+            "name": "Shrimp and Vegetable Curry with Rice",
+            "url": "https://theloopywhisk.com/shrimp-curry/",
+            "protein": "shrimp",
+            "vegetables": [
+              "bell peppers",
+              "spinach",
+              "onions"
+            ],
+            "starch": "rice",
+            "cuisine": "indian",
+            "gluten_free": true,
+            "ingredients": [
+              "shrimp",
+              "rice",
+              "bell peppers",
+              "spinach",
+              "onions",
+              "coconut milk",
+              "curry spices"
+            ],
+            "prep_time": 30,
+            "difficulty": "medium",
+            "suggestion_number": 1,
+            "week_date": "2025-07-30",
+            "suggested_date": "2025-07-30T18:45:42.730536"
+          },
+          {
+            "name": "Coconut Chicken Rice Bowl",
+            "url": "https://www.skinnytaste.com/coconut-chicken-rice-bowl/",
+            "protein": "chicken",
+            "vegetables": [
+              "broccoli",
+              "carrots",
+              "snap peas"
+            ],
+            "starch": "rice",
+            "cuisine": "asian",
+            "gluten_free": true,
+            "ingredients": [
+              "chicken breast",
+              "coconut milk",
+              "rice",
+              "broccoli",
+              "carrots",
+              "snap peas",
+              "garlic",
+              "ginger"
+            ],
+            "prep_time": 30,
+            "difficulty": "easy",
+            "suggestion_number": 2,
+            "week_date": "2025-07-30",
+            "suggested_date": "2025-07-30T18:45:42.730550"
+          },
+          {
+            "id": "user_006",
+            "name": "Turkey and Sweet Potato Bowl",
+            "protein": "turkey",
+            "vegetables": [
+              "sweet potatoes",
+              "green beans"
+            ],
+            "starch": "sweet potato",
+            "cuisine": "american",
+            "gluten_free": true,
+            "user_rating": 5,
+            "ingredients": [
+              "ground turkey",
+              "sweet potatoes",
+              "green beans",
+              "onions",
+              "herbs"
+            ],
+            "source": "user_favorite",
+            "notes": "Hearty and nutritious",
+            "cooking_method": "stove",
+            "equipment": [
+              "stove",
+              "pan"
+            ],
+            "suggestion_number": 3,
+            "week_date": "2025-07-30",
+            "suggested_date": "2025-07-30T18:45:42.730552"
+          },
+          {
+            "name": "Mediterranean Turkey Meatballs with Quinoa",
+            "url": "https://meaningfuleats.com/mediterranean-turkey-meatballs/",
+            "protein": "turkey",
+            "vegetables": [
+              "zucchini",
+              "tomatoes",
+              "spinach"
+            ],
+            "starch": "quinoa",
+            "cuisine": "mediterranean",
+            "gluten_free": true,
+            "ingredients": [
+              "ground turkey",
+              "quinoa",
+              "zucchini",
+              "tomatoes",
+              "spinach",
+              "herbs",
+              "olive oil"
+            ],
+            "prep_time": 40,
+            "difficulty": "medium",
+            "suggestion_number": 4,
+            "week_date": "2025-07-30",
+            "suggested_date": "2025-07-30T18:45:42.730554"
+          },
+          {
+            "name": "Teriyaki Chicken Rice Bowl",
+            "url": "https://www.flavourandsavour.com/teriyaki-chicken-rice-bowls-gluten-free/",
+            "protein": "chicken",
+            "vegetables": [
+              "broccoli",
+              "bell peppers"
+            ],
+            "starch": "rice",
+            "cuisine": "asian",
+            "gluten_free": true,
+            "ingredients": [
+              "chicken breast",
+              "rice",
+              "broccoli",
+              "bell peppers",
+              "teriyaki sauce",
+              "sesame oil"
+            ],
+            "prep_time": 25,
+            "difficulty": "easy",
+            "suggestion_number": 5,
+            "week_date": "2025-07-30",
+            "suggested_date": "2025-07-30T18:45:42.730555"
+          },
+          {
+            "name": "Mediterranean Salmon Quinoa Bowl",
+            "url": "https://www.jessicagavin.com/mediterranean-spiced-salmon-and-vegetable-quinoa/",
+            "protein": "salmon",
+            "vegetables": [
+              "zucchini",
+              "cherry tomatoes",
+              "olives"
+            ],
+            "starch": "quinoa",
+            "cuisine": "mediterranean",
+            "gluten_free": true,
+            "ingredients": [
+              "salmon fillet",
+              "quinoa",
+              "zucchini",
+              "cherry tomatoes",
+              "olives",
+              "lemon",
+              "olive oil"
+            ],
+            "prep_time": 35,
+            "difficulty": "medium",
+            "suggestion_number": 6,
+            "week_date": "2025-07-30",
+            "suggested_date": "2025-07-30T18:45:42.730557"
+          },
+          {
+            "name": "Buffalo Chicken Rice Bowl",
+            "url": "https://www.maryswholelife.com/buffalo-chicken-rice-bowls/",
+            "protein": "chicken",
+            "vegetables": [
+              "celery",
+              "carrots",
+              "tomatoes"
+            ],
+            "starch": "rice",
+            "cuisine": "american",
+            "gluten_free": true,
+            "ingredients": [
+              "chicken breast",
+              "rice",
+              "celery",
+              "carrots",
+              "tomatoes",
+              "buffalo sauce",
+              "blue cheese"
+            ],
+            "prep_time": 30,
+            "difficulty": "easy",
+            "suggestion_number": 7,
+            "week_date": "2025-07-30",
+            "suggested_date": "2025-07-30T18:45:42.730558"
+          },
+          {
+            "id": "user_001",
+            "name": "Asian Chicken and Rice Bowl",
+            "protein": "chicken",
+            "vegetables": [
+              "broccoli",
+              "carrots"
+            ],
+            "starch": "rice",
+            "cuisine": "asian",
+            "gluten_free": true,
+            "user_rating": 5,
+            "ingredients": [
+              "chicken breast",
+              "broccoli",
+              "carrots",
+              "rice",
+              "soy sauce",
+              "garlic",
+              "ginger"
+            ],
+            "source": "user_favorite",
+            "notes": "Colorful bowl with protein and vegetables",
+            "suggestion_number": 8,
+            "week_date": "2025-07-30",
+            "suggested_date": "2025-07-30T18:45:42.730563",
+            "cooking_method": "stove",
+            "equipment": [
+              "stove",
+              "pan"
+            ]
+          },
+          {
+            "name": "Thai Basil Chicken with Rice",
+            "url": "https://www.mamaknowsglutenfree.com/thai-basil-chicken/",
+            "protein": "chicken",
+            "vegetables": [
+              "bell peppers",
+              "onions",
+              "basil"
+            ],
+            "starch": "rice",
+            "cuisine": "thai",
+            "gluten_free": true,
+            "ingredients": [
+              "chicken breast",
+              "rice",
+              "bell peppers",
+              "onions",
+              "thai basil",
+              "fish sauce",
+              "chili"
+            ],
+            "prep_time": 25,
+            "difficulty": "medium",
+            "suggestion_number": 9,
+            "week_date": "2025-07-30",
+            "suggested_date": "2025-07-30T18:45:42.730565"
+          },
+          {
+            "name": "Gluten-Free Beef and Broccoli Stir Fry",
+            "url": "https://www.faithfullyglutenfree.com/gluten-free-beef-and-broccoli-stir-fry/",
+            "protein": "beef",
+            "vegetables": [
+              "broccoli",
+              "onions"
+            ],
+            "starch": "rice",
+            "cuisine": "asian",
+            "gluten_free": true,
+            "ingredients": [
+              "beef strips",
+              "broccoli",
+              "onions",
+              "rice",
+              "gluten-free soy sauce",
+              "garlic",
+              "ginger"
+            ],
+            "prep_time": 20,
+            "difficulty": "easy",
+            "suggestion_number": 10,
+            "week_date": "2025-07-30",
+            "suggested_date": "2025-07-30T18:45:42.730566"
+          },
+          {
+            "name": "Pork Tenderloin with Quinoa Pilaf",
+            "url": "https://grainfreetable.com/pork-tenderloin-quinoa/",
+            "protein": "pork",
+            "vegetables": [
+              "brussels sprouts",
+              "carrots"
+            ],
+            "starch": "quinoa",
+            "cuisine": "american",
+            "gluten_free": true,
+            "ingredients": [
+              "pork tenderloin",
+              "quinoa",
+              "brussels sprouts",
+              "carrots",
+              "herbs",
+              "olive oil"
+            ],
+            "prep_time": 45,
+            "difficulty": "medium",
+            "suggestion_number": 11,
+            "week_date": "2025-07-30",
+            "suggested_date": "2025-07-30T18:45:42.730568"
+          },
+          {
+            "name": "Mongolian Beef with Broccoli",
+            "url": "https://unboundwellness.com/mongolian-beef-stir-fry/",
+            "protein": "beef",
+            "vegetables": [
+              "broccoli",
+              "green onions"
+            ],
+            "starch": "rice",
+            "cuisine": "asian",
+            "gluten_free": true,
+            "ingredients": [
+              "beef strips",
+              "broccoli",
+              "green onions",
+              "rice",
+              "coconut aminos",
+              "garlic",
+              "ginger"
+            ],
+            "prep_time": 20,
+            "difficulty": "easy",
+            "suggestion_number": 12,
+            "week_date": "2025-07-30",
+            "suggested_date": "2025-07-30T18:45:42.730569"
+          },
+          {
+            "id": "user_008",
+            "name": "Fish and Quinoa Bowl",
+            "protein": "fish",
+            "vegetables": [
+              "asparagus",
+              "cherry tomatoes"
+            ],
+            "starch": "quinoa",
+            "cuisine": "mediterranean",
+            "gluten_free": true,
+            "user_rating": 5,
+            "ingredients": [
+              "white fish",
+              "quinoa",
+              "asparagus",
+              "cherry tomatoes",
+              "lemon",
+              "olive oil"
+            ],
+            "source": "user_favorite",
+            "notes": "Light and fresh",
+            "suggestion_number": 13,
+            "week_date": "2025-07-30",
+            "suggested_date": "2025-07-30T18:45:42.730571",
+            "cooking_method": "stove",
+            "equipment": [
+              "stove",
+              "pan"
+            ]
+          },
+          {
+            "name": "Spicy Beef and Vegetable Stir Fry",
+            "url": "https://glutenfreeandmore.com/gluten-free-spicy-beef-vegetable-stir-fry/",
+            "protein": "beef",
+            "vegetables": [
+              "bell peppers",
+              "snap peas",
+              "carrots"
+            ],
+            "starch": "rice",
+            "cuisine": "asian",
+            "gluten_free": true,
+            "ingredients": [
+              "beef strips",
+              "bell peppers",
+              "snap peas",
+              "carrots",
+              "rice",
+              "chili sauce",
+              "garlic"
+            ],
+            "prep_time": 25,
+            "difficulty": "medium",
+            "suggestion_number": 14,
+            "week_date": "2025-07-30",
+            "suggested_date": "2025-07-30T18:45:42.730572"
+          },
+          {
+            "id": "user_007",
+            "name": "Pork and Rice Noodle Bowl",
+            "protein": "pork",
+            "vegetables": [
+              "bok choy",
+              "mushrooms"
+            ],
+            "starch": "rice noodles",
+            "cuisine": "asian",
+            "gluten_free": true,
+            "user_rating": 5,
+            "ingredients": [
+              "pork tenderloin",
+              "rice noodles",
+              "bok choy",
+              "mushrooms",
+              "soy sauce",
+              "sesame oil"
+            ],
+            "source": "user_favorite",
+            "notes": "Comforting noodle dish",
+            "suggestion_number": 15,
+            "week_date": "2025-07-30",
+            "suggested_date": "2025-07-30T18:45:42.730574",
+            "cooking_method": "stove",
+            "equipment": [
+              "stove",
+              "pan"
+            ]
+          }
+        ],
+        "generated_date": "2025-07-30T18:45:42.730576"
+      }
+    ]
+  },
+  "metadata": {
+    "total_recipes": 8,
+    "created_date": "2025-07-30T18:30:39.260695",
+    "version": "1.0"
+  },
+  "grocery_history": [
+    {
+      "week_date": "2025-07-30",
+      "selected_recipes": [
+        "user_001",
+        "user_002",
+        "user_003",
+        "user_004"
+      ],
+      "grocery_data": {
+        "grocery_list": {
+          "produce": [
+            {
+              "name": "bell peppers",
+              "quantity": "1 item",
+              "recipes": [
+                "Teriyaki Salmon with Vegetables"
+              ],
+              "cooking_methods": [
+                "oven"
+              ]
+            },
+            {
+              "name": "broccoli",
+              "quantity": "2 items",
+              "recipes": [
+                "Asian Chicken and Rice Bowl",
+                "Teriyaki Salmon with Vegetables"
+              ],
+              "cooking_methods": [
+                "oven",
+                "stove"
+              ]
+            },
+            {
+              "name": "carrots",
+              "quantity": "2 items",
+              "recipes": [
+                "Asian Chicken and Rice Bowl",
+                "Beef Stir Fry with Rice"
+              ],
+              "cooking_methods": [
+                "stove"
+              ]
+            },
+            {
+              "name": "cucumbers",
+              "quantity": "1 item",
+              "recipes": [
+                "Mediterranean Chicken Bowl"
+              ],
+              "cooking_methods": [
+                "stove"
+              ]
+            },
+            {
+              "name": "garlic",
+              "quantity": "2 items",
+              "recipes": [
+                "Asian Chicken and Rice Bowl",
+                "Beef Stir Fry with Rice"
+              ],
+              "cooking_methods": [
+                "stove"
+              ]
+            },
+            {
+              "name": "ginger",
+              "quantity": "1 item",
+              "recipes": [
+                "Asian Chicken and Rice Bowl"
+              ],
+              "cooking_methods": [
+                "stove"
+              ]
+            },
+            {
+              "name": "onions",
+              "quantity": "1 item",
+              "recipes": [
+                "Beef Stir Fry with Rice"
+              ],
+              "cooking_methods": [
+                "stove"
+              ]
+            },
+            {
+              "name": "snap peas",
+              "quantity": "1 item",
+              "recipes": [
+                "Beef Stir Fry with Rice"
+              ],
+              "cooking_methods": [
+                "stove"
+              ]
+            },
+            {
+              "name": "tomatoes",
+              "quantity": "1 item",
+              "recipes": [
+                "Mediterranean Chicken Bowl"
+              ],
+              "cooking_methods": [
+                "stove"
+              ]
+            }
+          ],
+          "meat_seafood": [
+            {
+              "name": "beef strips",
+              "quantity": "1 item",
+              "recipes": [
+                "Beef Stir Fry with Rice"
+              ],
+              "cooking_methods": [
+                "stove"
+              ]
+            },
+            {
+              "name": "chicken breast",
+              "quantity": "2 items",
+              "recipes": [
+                "Asian Chicken and Rice Bowl",
+                "Mediterranean Chicken Bowl"
+              ],
+              "cooking_methods": [
+                "stove"
+              ]
+            },
+            {
+              "name": "salmon fillet",
+              "quantity": "1 item",
+              "recipes": [
+                "Teriyaki Salmon with Vegetables"
+              ],
+              "cooking_methods": [
+                "oven"
+              ]
+            }
+          ],
+          "dairy": [
+            {
+              "name": "feta cheese",
+              "quantity": "1 item",
+              "recipes": [
+                "Mediterranean Chicken Bowl"
+              ],
+              "cooking_methods": [
+                "stove"
+              ]
+            }
+          ],
+          "pantry": [
+            {
+              "name": "olive oil",
+              "quantity": "1 item",
+              "recipes": [
+                "Mediterranean Chicken Bowl"
+              ],
+              "cooking_methods": [
+                "stove"
+              ]
+            },
+            {
+              "name": "quinoa",
+              "quantity": "1 item",
+              "recipes": [
+                "Mediterranean Chicken Bowl"
+              ],
+              "cooking_methods": [
+                "stove"
+              ]
+            },
+            {
+              "name": "rice",
+              "quantity": "3 items",
+              "recipes": [
+                "Asian Chicken and Rice Bowl",
+                "Beef Stir Fry with Rice",
+                "Teriyaki Salmon with Vegetables"
+              ],
+              "cooking_methods": [
+                "oven",
+                "stove"
+              ]
+            },
+            {
+              "name": "sesame oil",
+              "quantity": "1 item",
+              "recipes": [
+                "Teriyaki Salmon with Vegetables"
+              ],
+              "cooking_methods": [
+                "oven"
+              ]
+            },
+            {
+              "name": "soy sauce",
+              "quantity": "1 item",
+              "recipes": [
+                "Asian Chicken and Rice Bowl"
+              ],
+              "cooking_methods": [
+                "stove"
+              ]
+            },
+            {
+              "name": "stir fry sauce",
+              "quantity": "1 item",
+              "recipes": [
+                "Beef Stir Fry with Rice"
+              ],
+              "cooking_methods": [
+                "stove"
+              ]
+            },
+            {
+              "name": "teriyaki sauce",
+              "quantity": "1 item",
+              "recipes": [
+                "Teriyaki Salmon with Vegetables"
+              ],
+              "cooking_methods": [
+                "oven"
+              ]
+            }
+          ],
+          "other": [
+            {
+              "name": "olives",
+              "quantity": "1 item",
+              "recipes": [
+                "Mediterranean Chicken Bowl"
+              ],
+              "cooking_methods": [
+                "stove"
+              ]
+            }
+          ]
+        },
+        "equipment_reminders": [],
+        "shopping_tips": [
+          "\ud83d\udca1 You're buying multiple proteins - check for bulk discounts",
+          "\ud83e\udd55 Consider buying pre-cut vegetable mix if available",
+          "\ud83d\uded2 Large shopping list - consider using grocery pickup/delivery"
+        ],
+        "total_recipes": 4,
+        "estimated_cost_range": "$58 - $110"
+      },
+      "generated_date": "2025-07-30T18:36:50.181740"
+    }
+  ]
+}

@@ -1,0 +1,58 @@
+{
+  "available_equipment": [
+    "grill",
+    "stove",
+    "oven",
+    "air_fryer",
+    "instant_pot"
+  ],
+  "method_preferences": {
+    "grill": {
+      "best_for": [
+        "chicken",
+        "salmon",
+        "beef",
+        "vegetables"
+      ],
+      "season_preference": "summer",
+      "difficulty": "medium"
+    },
+    "air_fryer": {
+      "best_for": [
+        "chicken",
+        "fish",
+        "vegetables"
+      ],
+      "speed": "fast",
+      "difficulty": "easy"
+    },
+    "instant_pot": {
+      "best_for": [
+        "chicken",
+        "beef",
+        "stews",
+        "rice"
+      ],
+      "speed": "fast",
+      "difficulty": "easy"
+    },
+    "oven": {
+      "best_for": [
+        "sheet_pan_meals",
+        "roasting",
+        "baking"
+      ],
+      "batch_cooking": true,
+      "difficulty": "easy"
+    },
+    "stove": {
+      "best_for": [
+        "stir_fry",
+        "sauteing",
+        "quick_cooking"
+      ],
+      "speed": "fast",
+      "difficulty": "easy"
+    }
+  }
+}

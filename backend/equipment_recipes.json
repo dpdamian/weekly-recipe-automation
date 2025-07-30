@@ -1,0 +1,299 @@
+[
+  {
+    "name": "Grilled Chicken and Vegetable Skewers with Rice",
+    "url": "https://www.mamaknowsglutenfree.com/grilled-chicken-skewers/",
+    "protein": "chicken",
+    "vegetables": [
+      "bell peppers",
+      "zucchini",
+      "onions"
+    ],
+    "starch": "rice",
+    "cuisine": "mediterranean",
+    "gluten_free": true,
+    "ingredients": [
+      "chicken breast",
+      "bell peppers",
+      "zucchini",
+      "onions",
+      "rice",
+      "olive oil",
+      "herbs"
+    ],
+    "prep_time": 30,
+    "difficulty": "easy",
+    "cooking_method": "grill",
+    "equipment": [
+      "grill",
+      "skewers"
+    ],
+    "alternative_methods": [
+      "oven"
+    ]
+  },
+  {
+    "name": "Grilled Salmon with Quinoa and Asparagus",
+    "url": "https://www.healthygffamily.com/grilled-salmon-quinoa/",
+    "protein": "salmon",
+    "vegetables": [
+      "asparagus",
+      "cherry tomatoes"
+    ],
+    "starch": "quinoa",
+    "cuisine": "healthy",
+    "gluten_free": true,
+    "ingredients": [
+      "salmon fillet",
+      "quinoa",
+      "asparagus",
+      "cherry tomatoes",
+      "lemon",
+      "olive oil"
+    ],
+    "prep_time": 25,
+    "difficulty": "easy",
+    "cooking_method": "grill",
+    "equipment": [
+      "grill"
+    ],
+    "alternative_methods": [
+      "oven",
+      "air_fryer"
+    ]
+  },
+  {
+    "name": "Grilled Steak with Sweet Potato Wedges",
+    "url": "https://grainfreetable.com/grilled-steak-sweet-potato/",
+    "protein": "beef",
+    "vegetables": [
+      "sweet potatoes",
+      "green beans"
+    ],
+    "starch": "sweet potato",
+    "cuisine": "american",
+    "gluten_free": true,
+    "ingredients": [
+      "beef steak",
+      "sweet potatoes",
+      "green beans",
+      "garlic",
+      "herbs"
+    ],
+    "prep_time": 35,
+    "difficulty": "medium",
+    "cooking_method": "grill",
+    "equipment": [
+      "grill"
+    ],
+    "alternative_methods": [
+      "oven"
+    ]
+  },
+  {
+    "name": "Air Fryer Chicken Thighs with Roasted Vegetables",
+    "url": "https://www.skinnytaste.com/air-fryer-chicken-thighs/",
+    "protein": "chicken",
+    "vegetables": [
+      "broccoli",
+      "carrots",
+      "brussels sprouts"
+    ],
+    "starch": "quinoa",
+    "cuisine": "healthy",
+    "gluten_free": true,
+    "ingredients": [
+      "chicken thighs",
+      "broccoli",
+      "carrots",
+      "brussels sprouts",
+      "quinoa",
+      "olive oil"
+    ],
+    "prep_time": 25,
+    "difficulty": "easy",
+    "cooking_method": "air_fryer",
+    "equipment": [
+      "air_fryer"
+    ],
+    "alternative_methods": [
+      "oven"
+    ]
+  },
+  {
+    "name": "Air Fryer Cod with Sweet Potato Fries",
+    "url": "https://www.faithfullyglutenfree.com/air-fryer-cod/",
+    "protein": "cod",
+    "vegetables": [
+      "sweet potatoes",
+      "green beans"
+    ],
+    "starch": "sweet potato",
+    "cuisine": "american",
+    "gluten_free": true,
+    "ingredients": [
+      "cod fillet",
+      "sweet potatoes",
+      "green beans",
+      "lemon",
+      "herbs"
+    ],
+    "prep_time": 20,
+    "difficulty": "easy",
+    "cooking_method": "air_fryer",
+    "equipment": [
+      "air_fryer"
+    ],
+    "alternative_methods": [
+      "oven"
+    ]
+  },
+  {
+    "name": "Instant Pot Chicken and Rice Bowl",
+    "url": "https://meaningfuleats.com/instant-pot-chicken-rice/",
+    "protein": "chicken",
+    "vegetables": [
+      "carrots",
+      "peas",
+      "onions"
+    ],
+    "starch": "rice",
+    "cuisine": "american",
+    "gluten_free": true,
+    "ingredients": [
+      "chicken breast",
+      "rice",
+      "carrots",
+      "peas",
+      "onions",
+      "broth"
+    ],
+    "prep_time": 15,
+    "difficulty": "easy",
+    "cooking_method": "instant_pot",
+    "equipment": [
+      "instant_pot"
+    ],
+    "alternative_methods": [
+      "stove"
+    ]
+  },
+  {
+    "name": "Instant Pot Beef and Vegetable Stew with Quinoa",
+    "url": "https://theloopywhisk.com/instant-pot-beef-stew/",
+    "protein": "beef",
+    "vegetables": [
+      "carrots",
+      "celery",
+      "potatoes"
+    ],
+    "starch": "quinoa",
+    "cuisine": "american",
+    "gluten_free": true,
+    "ingredients": [
+      "beef chunks",
+      "carrots",
+      "celery",
+      "potatoes",
+      "quinoa",
+      "broth"
+    ],
+    "prep_time": 20,
+    "difficulty": "easy",
+    "cooking_method": "instant_pot",
+    "equipment": [
+      "instant_pot"
+    ],
+    "alternative_methods": [
+      "stove",
+      "oven"
+    ]
+  },
+  {
+    "name": "Instant Pot Salmon with Steamed Vegetables",
+    "url": "https://kaynutrition.com/instant-pot-salmon/",
+    "protein": "salmon",
+    "vegetables": [
+      "broccoli",
+      "carrots"
+    ],
+    "starch": "rice",
+    "cuisine": "healthy",
+    "gluten_free": true,
+    "ingredients": [
+      "salmon fillet",
+      "broccoli",
+      "carrots",
+      "rice",
+      "lemon"
+    ],
+    "prep_time": 15,
+    "difficulty": "easy",
+    "cooking_method": "instant_pot",
+    "equipment": [
+      "instant_pot"
+    ],
+    "alternative_methods": [
+      "stove",
+      "oven"
+    ]
+  },
+  {
+    "name": "Sheet Pan Chicken and Vegetables with Quinoa",
+    "url": "https://www.healthygffamily.com/sheet-pan-chicken/",
+    "protein": "chicken",
+    "vegetables": [
+      "bell peppers",
+      "zucchini",
+      "onions"
+    ],
+    "starch": "quinoa",
+    "cuisine": "mediterranean",
+    "gluten_free": true,
+    "ingredients": [
+      "chicken breast",
+      "bell peppers",
+      "zucchini",
+      "onions",
+      "quinoa",
+      "olive oil"
+    ],
+    "prep_time": 35,
+    "difficulty": "easy",
+    "cooking_method": "oven",
+    "equipment": [
+      "oven",
+      "sheet_pan"
+    ],
+    "alternative_methods": [
+      "grill"
+    ]
+  },
+  {
+    "name": "Baked Turkey Meatballs with Roasted Sweet Potatoes",
+    "url": "https://meaningfuleats.com/baked-turkey-meatballs/",
+    "protein": "turkey",
+    "vegetables": [
+      "sweet potatoes",
+      "spinach"
+    ],
+    "starch": "sweet potato",
+    "cuisine": "american",
+    "gluten_free": true,
+    "ingredients": [
+      "ground turkey",
+      "sweet potatoes",
+      "spinach",
+      "herbs",
+      "olive oil"
+    ],
+    "prep_time": 40,
+    "difficulty": "medium",
+    "cooking_method": "oven",
+    "equipment": [
+      "oven"
+    ],
+    "alternative_methods": [
+      "air_fryer"
+    ]
+  }
+]
