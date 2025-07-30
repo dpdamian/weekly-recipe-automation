@@ -1,341 +1,305 @@
+// Weekly Recipe Automation - Enhanced Cooking Site Experience
 class RecipeSelector {
     constructor() {
         this.selectedRecipes = [];
         this.allRecipes = [];
-        this.currentSuggestions = [];
         this.maxSelections = 4;
-        
         this.init();
     }
-    
+
     async init() {
-        this.bindEvents();
-        await this.loadWeeklySuggestions();
+        this.showLoading('🍳 Loading your weekly recipe collection...');
+        await this.loadRecipes();
+        this.setupEventListeners();
+        this.hideLoading();
+        this.showWelcomeMessage();
     }
-    
-    bindEvents() {
-        // Filter controls
-        document.getElementById('proteinFilter').addEventListener('change', () => this.filterRecipes());
-        document.getElementById('cuisineFilter').addEventListener('change', () => this.filterRecipes());
-        document.getElementById('cookingMethodFilter').addEventListener('change', () => this.filterRecipes());
+
+    showWelcomeMessage() {
+        // Add a subtle welcome animation
+        const header = document.querySelector('header');
+        header.style.transform = 'translateY(-20px)';
+        header.style.opacity = '0';
         
-        // Grocery list button
-        document.getElementById('generateGroceryList').addEventListener('click', () => this.generateGroceryList());
-        
-        // Modal controls
-        document.querySelector('.close').addEventListener('click', () => this.closeModal());
-        document.getElementById('downloadGroceryList').addEventListener('click', () => this.downloadGroceryList());
-        
-        // Close modal when clicking outside
-        window.addEventListener('click', (event) => {
-            const modal = document.getElementById('groceryModal');
-            if (event.target === modal) {
-                this.closeModal();
-            }
-        });
+        setTimeout(() => {
+            header.style.transition = 'all 0.8s cubic-bezier(0.4, 0, 0.2, 1)';
+            header.style.transform = 'translateY(0)';
+            header.style.opacity = '1';
+        }, 100);
     }
-    
-    async loadWeeklySuggestions() {
-        this.showLoading(true);
-        
+
+    async loadRecipes() {
         try {
             const response = await fetch('/api/recipe/weekly-suggestions');
-            const data = await response.json();
-            
-            if (data.success) {
-                this.allRecipes = data.suggestions;
-                this.currentSuggestions = [...this.allRecipes];
-                this.renderRecipes();
-            } else {
-                this.showError('Failed to load recipes: ' + data.error);
+            if (!response.ok) {
+                throw new Error(`HTTP error! status: ${response.status}`);
             }
+            const data = await response.json();
+            this.allRecipes = data.suggestions || [];
+            this.renderRecipes();
         } catch (error) {
-            this.showError('Error loading recipes: ' + error.message);
-        } finally {
-            this.showLoading(false);
+            console.error('Error loading recipes:', error);
+            this.showError('🍽️ Oops! We had trouble loading your recipes. Please refresh the page to try again.');
         }
     }
-    
-    renderRecipes() {
+
+    renderRecipes(filteredRecipes = null) {
+        const recipesToRender = filteredRecipes || this.allRecipes;
         const grid = document.getElementById('recipesGrid');
-        grid.innerHTML = '';
         
-        this.currentSuggestions.forEach(recipe => {
-            const card = this.createRecipeCard(recipe);
-            grid.appendChild(card);
-        });
+        if (recipesToRender.length === 0) {
+            grid.innerHTML = `
+                <div style="grid-column: 1 / -1; text-align: center; padding: 60px 20px; color: var(--soft-gray);">
+                    <div style="font-size: 4em; margin-bottom: 20px;">🔍</div>
+                    <h3 style="font-family: 'Playfair Display', serif; margin-bottom: 10px;">No recipes found</h3>
+                    <p>Try adjusting your filters to discover more delicious options!</p>
+                </div>
+            `;
+            return;
+        }
+
+        grid.innerHTML = recipesToRender.map(recipe => this.createRecipeCard(recipe)).join('');
     }
-    
+
     createRecipeCard(recipe) {
-        const card = document.createElement('div');
-        card.className = 'recipe-card';
-        card.dataset.recipeId = recipe.id;
-        
         const isSelected = this.selectedRecipes.some(r => r.id === recipe.id);
-        const isDisabled = this.selectedRecipes.length >= this.maxSelections && !isSelected;
+        const isDisabled = !isSelected && this.selectedRecipes.length >= this.maxSelections;
         
-        if (isSelected) card.classList.add('selected');
-        if (isDisabled) card.classList.add('disabled');
-        
-        const cookingMethod = recipe.cooking_method ? recipe.cooking_method.replace('_', ' ') : 'stove';
-        const prepTime = recipe.prep_time || 30;
-        const difficulty = recipe.difficulty || 'medium';
-        
-        card.innerHTML = `
-            <h3>${recipe.name}</h3>
-            <div class="recipe-info">
-                <p><strong>Protein:</strong> ${recipe.protein || 'N/A'}</p>
-                <p><strong>Vegetables:</strong> ${(recipe.vegetables || []).join(', ')}</p>
-                <p><strong>Starch:</strong> ${recipe.starch || 'N/A'}</p>
-                <p><strong>Prep Time:</strong> ${prepTime} minutes</p>
-                <p><strong>Difficulty:</strong> ${difficulty}</p>
-            </div>
-            <div class="recipe-tags">
-                <span class="tag protein">${recipe.protein || 'protein'}</span>
-                <span class="tag cuisine">${recipe.cuisine || 'various'}</span>
-                <span class="tag method">${cookingMethod}</span>
-                ${recipe.source === 'user_favorite' ? '<span class="tag favorite">⭐ Favorite</span>' : ''}
-            </div>
-            ${recipe.url ? `<a href="${recipe.url}" target="_blank" class="recipe-link">View Recipe →</a>` : ''}
-        `;
-        
-        if (!isDisabled) {
-            card.addEventListener('click', () => this.toggleRecipeSelection(recipe));
-        }
-        
-        return card;
-    }
-    
-    async toggleRecipeSelection(recipe) {
-        const isSelected = this.selectedRecipes.some(r => r.id === recipe.id);
-        
-        if (isSelected) {
-            // Remove from selection
-            this.selectedRecipes = this.selectedRecipes.filter(r => r.id !== recipe.id);
-        } else {
-            // Add to selection (if not at max)
-            if (this.selectedRecipes.length < this.maxSelections) {
-                this.selectedRecipes.push(recipe);
+        // Enhanced recipe card with cooking-themed styling
+        return `
+            <div class="recipe-card ${isSelected ? 'selected' : ''} ${isDisabled ? 'disabled' : ''}" 
+                 data-recipe-id="${recipe.id}" 
+                 onclick="${isDisabled ? '' : `recipeSelector.toggleRecipe('${recipe.id}')`}">
                 
-                // Update suggestions after selection
-                await this.updateSuggestionsAfterSelection(recipe);
-            }
-        }
+                <h3>${recipe.name}</h3>
+                
+                <div class="recipe-tags">
+                    <span class="tag protein">${this.getProteinEmoji(recipe.protein)} ${recipe.protein}</span>
+                    <span class="tag cuisine">${this.getCuisineEmoji(recipe.cuisine)} ${recipe.cuisine}</span>
+                    <span class="tag method">${this.getMethodEmoji(recipe.cooking_method)} ${recipe.cooking_method}</span>
+                    ${recipe.source === 'user_favorite' ? '<span class="tag favorite">⭐ Favorite</span>' : ''}
+                </div>
+                
+                <div class="recipe-info">
+                    <p><strong>🥬 Vegetables:</strong> ${recipe.vegetables}</p>
+                    <p><strong>🌾 Starch:</strong> ${recipe.starch}</p>
+                    <p><strong>⏱️ Prep Time:</strong> ${recipe.prep_time} minutes</p>
+                    <p><strong>👨‍🍳 Difficulty:</strong> ${this.getDifficultyDisplay(recipe.difficulty)}</p>
+                </div>
+                
+                ${recipe.url ? `<a href="${recipe.url}" target="_blank" class="recipe-link">View Full Recipe</a>` : ''}
+            </div>
+        `;
+    }
+
+    getProteinEmoji(protein) {
+        const emojis = {
+            'chicken': '🐔',
+            'beef': '🥩',
+            'fish': '🐟',
+            'salmon': '🍣',
+            'shrimp': '🦐',
+            'turkey': '🦃',
+            'pork': '🐷'
+        };
+        return emojis[protein] || '🍖';
+    }
+
+    getCuisineEmoji(cuisine) {
+        const emojis = {
+            'asian': '🥢',
+            'mediterranean': '🫒',
+            'american': '🇺🇸',
+            'indian': '🍛',
+            'thai': '🌶️',
+            'mexican': '🌮'
+        };
+        return emojis[cuisine] || '🌍';
+    }
+
+    getMethodEmoji(method) {
+        const emojis = {
+            'stove': '🔥',
+            'oven': '🔥',
+            'grill': '🔥',
+            'air_fryer': '💨',
+            'instant_pot': '⚡'
+        };
+        return emojis[method] || '👨‍🍳';
+    }
+
+    getDifficultyDisplay(difficulty) {
+        const levels = {
+            'easy': '⭐ Easy',
+            'medium': '⭐⭐ Medium',
+            'hard': '⭐⭐⭐ Hard'
+        };
+        return levels[difficulty] || '⭐ Easy';
+    }
+
+    toggleRecipe(recipeId) {
+        const recipe = this.allRecipes.find(r => r.id === recipeId);
+        if (!recipe) return;
+
+        const existingIndex = this.selectedRecipes.findIndex(r => r.id === recipeId);
         
-        this.updateUI();
-    }
-    
-    async updateSuggestionsAfterSelection(selectedRecipe) {
-        try {
-            const response = await fetch('/api/recipe/update-suggestions', {
-                method: 'POST',
-                headers: {
-                    'Content-Type': 'application/json',
-                },
-                body: JSON.stringify({
-                    selected_recipe: selectedRecipe,
-                    remaining_suggestions: this.currentSuggestions.filter(r => r.id !== selectedRecipe.id)
-                })
-            });
-            
-            const data = await response.json();
-            
-            if (data.success) {
-                // Update current suggestions with optimized list
-                this.currentSuggestions = [
-                    ...this.selectedRecipes,
-                    ...data.updated_suggestions
-                ];
-                this.filterRecipes(); // Re-apply current filters
-            }
-        } catch (error) {
-            console.error('Error updating suggestions:', error);
+        if (existingIndex >= 0) {
+            // Remove recipe with animation
+            this.selectedRecipes.splice(existingIndex, 1);
+            this.showNotification(`🗑️ Removed "${recipe.name}" from your menu`, 'info');
+        } else if (this.selectedRecipes.length < this.maxSelections) {
+            // Add recipe with animation
+            this.selectedRecipes.push(recipe);
+            this.showNotification(`✅ Added "${recipe.name}" to your menu!`, 'success');
         }
+
+        this.updateUI();
+        this.updateIngredientOverlap();
     }
-    
+
     updateUI() {
         this.updateProgress();
-        this.renderSelectedRecipes();
+        this.updateSelectedRecipes();
         this.renderRecipes();
-        this.updateIngredientOverlap();
         this.updateGroceryButton();
     }
-    
+
     updateProgress() {
         const progress = (this.selectedRecipes.length / this.maxSelections) * 100;
-        document.getElementById('progressFill').style.width = progress + '%';
-        document.getElementById('selectedCount').textContent = this.selectedRecipes.length;
+        const progressFill = document.getElementById('progressFill');
+        const progressText = document.getElementById('progressText');
+        
+        progressFill.style.width = `${progress}%`;
+        
+        const messages = [
+            "Select 4 delicious recipes for your week (0/4 selected)",
+            "Great start! Keep building your menu (1/4 selected) 🍽️",
+            "You're halfway there! (2/4 selected) 👨‍🍳",
+            "Almost ready for a fantastic week! (3/4 selected) 🌟",
+            "Perfect! Your weekly menu is complete! (4/4 selected) 🎉"
+        ];
+        
+        progressText.textContent = messages[this.selectedRecipes.length];
     }
-    
-    renderSelectedRecipes() {
+
+    updateSelectedRecipes() {
         const container = document.getElementById('selectedRecipes');
         
         if (this.selectedRecipes.length === 0) {
             container.innerHTML = `
                 <div class="empty-selection">
-                    <p>Select recipes to see them here</p>
+                    <p>Start building your delicious week by selecting recipes from the collection!</p>
                 </div>
             `;
             return;
         }
-        
-        container.innerHTML = this.selectedRecipes.map(recipe => `
-            <div class="selected-recipe-item">
-                <button class="remove-btn" onclick="recipeSelector.removeRecipe('${recipe.id}')">×</button>
+
+        container.innerHTML = this.selectedRecipes.map((recipe, index) => `
+            <div class="selected-recipe-item" style="animation: slideIn 0.5s ease ${index * 0.1}s both;">
+                <button class="remove-btn" onclick="recipeSelector.toggleRecipe('${recipe.id}')" title="Remove recipe">×</button>
                 <h4>${recipe.name}</h4>
-                <p>${recipe.protein} • ${recipe.cuisine} • ${recipe.cooking_method?.replace('_', ' ')}</p>
+                <p>${this.getProteinEmoji(recipe.protein)} ${recipe.protein} • ${this.getCuisineEmoji(recipe.cuisine)} ${recipe.cuisine} • ${this.getMethodEmoji(recipe.cooking_method)} ${recipe.cooking_method}</p>
             </div>
         `).join('');
     }
-    
-    removeRecipe(recipeId) {
-        this.selectedRecipes = this.selectedRecipes.filter(r => r.id !== recipeId);
-        this.updateUI();
-    }
-    
+
     async updateIngredientOverlap() {
-        const overlapContainer = document.getElementById('ingredientOverlap');
-        
         if (this.selectedRecipes.length < 2) {
-            overlapContainer.style.display = 'none';
+            document.getElementById('ingredientOverlap').style.display = 'none';
             return;
         }
-        
+
         try {
             const response = await fetch('/api/recipe/ingredient-overlap', {
                 method: 'POST',
-                headers: {
-                    'Content-Type': 'application/json',
-                },
+                headers: { 'Content-Type': 'application/json' },
                 body: JSON.stringify({
                     recipe_ids: this.selectedRecipes.map(r => r.id)
                 })
             });
-            
-            const data = await response.json();
-            
-            if (data.success) {
-                const overlap = data.overlap_info;
-                const efficiency = Math.round((overlap.overlap_score / overlap.total_unique_ingredients) * 100);
-                
-                document.getElementById('overlapInfo').innerHTML = `
-                    <div class="overlap-stat">
-                        <span>Shared Ingredients:</span>
-                        <span><strong>${overlap.shared_ingredients.length}</strong></span>
-                    </div>
-                    <div class="overlap-stat">
-                        <span>Total Unique:</span>
-                        <span><strong>${overlap.total_unique_ingredients}</strong></span>
-                    </div>
-                    <div class="overlap-stat">
-                        <span>Efficiency Score:</span>
-                        <span><strong>${efficiency}%</strong></span>
-                    </div>
-                    ${overlap.shared_ingredients.length > 0 ? `
-                        <p style="margin-top: 10px; font-size: 12px; color: #4a5568;">
-                            <strong>Shared:</strong> ${overlap.shared_ingredients.slice(0, 3).join(', ')}
-                            ${overlap.shared_ingredients.length > 3 ? '...' : ''}
-                        </p>
-                    ` : ''}
-                `;
-                
-                overlapContainer.style.display = 'block';
+
+            if (response.ok) {
+                const data = await response.json();
+                this.displayIngredientOverlap(data);
             }
         } catch (error) {
             console.error('Error calculating ingredient overlap:', error);
         }
     }
-    
-    updateGroceryButton() {
-        const button = document.getElementById('generateGroceryList');
-        button.disabled = this.selectedRecipes.length !== this.maxSelections;
-    }
-    
-    filterRecipes() {
-        const proteinFilter = document.getElementById('proteinFilter').value;
-        const cuisineFilter = document.getElementById('cuisineFilter').value;
-        const methodFilter = document.getElementById('cookingMethodFilter').value;
+
+    displayIngredientOverlap(data) {
+        const container = document.getElementById('ingredientOverlap');
+        const statsContainer = document.getElementById('overlapStats');
         
-        this.currentSuggestions = this.allRecipes.filter(recipe => {
-            const matchesProtein = !proteinFilter || recipe.protein === proteinFilter;
-            const matchesCuisine = !cuisineFilter || recipe.cuisine === cuisineFilter;
-            const matchesMethod = !methodFilter || recipe.cooking_method === methodFilter;
-            
-            return matchesProtein && matchesCuisine && matchesMethod;
-        });
+        const efficiency = Math.round((data.shared_ingredients.length / data.total_unique_ingredients) * 100);
+        const efficiencyEmoji = efficiency >= 70 ? '🌟' : efficiency >= 50 ? '👍' : '💡';
         
-        this.renderRecipes();
-    }
-    
-    async generateGroceryList() {
-        if (this.selectedRecipes.length !== this.maxSelections) {
-            alert('Please select exactly 4 recipes first.');
-            return;
-        }
-        
-        this.showLoading(true);
-        
-        try {
-            const response = await fetch('/api/recipe/grocery-list', {
-                method: 'POST',
-                headers: {
-                    'Content-Type': 'application/json',
-                },
-                body: JSON.stringify({
-                    recipe_ids: this.selectedRecipes.map(r => r.id),
-                    week_date: new Date().toISOString().split('T')[0]
-                })
-            });
-            
-            const data = await response.json();
-            
-            if (data.success) {
-                this.displayGroceryList(data);
-            } else {
-                this.showError('Failed to generate grocery list: ' + data.error);
-            }
-        } catch (error) {
-            this.showError('Error generating grocery list: ' + error.message);
-        } finally {
-            this.showLoading(false);
-        }
-    }
-    
-    displayGroceryList(data) {
-        const content = document.getElementById('groceryContent');
-        
-        let html = `
-            <div style="margin-bottom: 20px;">
-                <p><strong>Estimated Cost:</strong> ${data.estimated_cost}</p>
-                <p><strong>Total Recipes:</strong> ${data.selected_recipes.length}</p>
+        statsContainer.innerHTML = `
+            <div class="overlap-stat">
+                <span>🔄 Shared Ingredients:</span>
+                <span>${data.shared_ingredients.length}</span>
+            </div>
+            <div class="overlap-stat">
+                <span>📦 Total Unique Items:</span>
+                <span>${data.total_unique_ingredients}</span>
+            </div>
+            <div class="overlap-stat">
+                <span>${efficiencyEmoji} Shopping Efficiency:</span>
+                <span>${efficiency}%</span>
             </div>
         `;
         
-        // Equipment reminders
-        if (data.equipment_reminders && data.equipment_reminders.length > 0) {
-            html += `
-                <div style="margin-bottom: 20px; padding: 15px; background: #fff5f5; border-radius: 8px;">
-                    <h3>⚙️ Equipment Reminders</h3>
-                    <ul>
-                        ${data.equipment_reminders.map(reminder => `<li>${reminder}</li>`).join('')}
-                    </ul>
-                </div>
-            `;
-        }
+        container.style.display = 'block';
+    }
+
+    updateGroceryButton() {
+        const button = document.getElementById('generateGroceryBtn');
+        const isComplete = this.selectedRecipes.length === this.maxSelections;
         
-        // Shopping tips
-        if (data.shopping_tips && data.shopping_tips.length > 0) {
-            html += `
-                <div style="margin-bottom: 20px; padding: 15px; background: #f0fff4; border-radius: 8px;">
-                    <h3>💡 Shopping Tips</h3>
-                    <ul>
-                        ${data.shopping_tips.map(tip => `<li>${tip}</li>`).join('')}
-                    </ul>
-                </div>
-            `;
-        }
+        button.disabled = !isComplete;
         
-        // Grocery list by department
+        if (isComplete) {
+            button.textContent = '🛒 Generate Smart Grocery List';
+            button.style.background = 'var(--warm-gradient)';
+        } else {
+            button.textContent = `🛒 Select ${this.maxSelections - this.selectedRecipes.length} more recipe${this.maxSelections - this.selectedRecipes.length !== 1 ? 's' : ''}`;
+            button.style.background = 'var(--soft-gray)';
+        }
+    }
+
+    async generateGroceryList() {
+        if (this.selectedRecipes.length !== this.maxSelections) return;
+
+        this.showLoading('🛒 Creating your personalized grocery list...');
+
+        try {
+            const response = await fetch('/api/recipe/grocery-list', {
+                method: 'POST',
+                headers: { 'Content-Type': 'application/json' },
+                body: JSON.stringify({
+                    recipe_ids: this.selectedRecipes.map(r => r.id)
+                })
+            });
+
+            if (!response.ok) {
+                throw new Error(`HTTP error! status: ${response.status}`);
+            }
+
+            const data = await response.json();
+            this.displayGroceryList(data);
+            this.hideLoading();
+        } catch (error) {
+            console.error('Error generating grocery list:', error);
+            this.hideLoading();
+            this.showError('🛒 Sorry, we had trouble creating your grocery list. Please try again!');
+        }
+    }
+
+    displayGroceryList(data) {
+        const modal = document.getElementById('groceryModal');
+        const content = document.getElementById('groceryListContent');
+        
+        const groceryList = data.raw_data.grocery_list;
         const departmentEmojis = {
             'produce': '🥬',
             'meat_seafood': '🥩',
@@ -343,67 +307,206 @@ class RecipeSelector {
             'pantry': '🏺',
             'frozen': '🧊',
             'condiments': '🍯',
-            'spices': '🌿',
-            'other': '📦'
+            'spices': '🌿'
         };
+
+        let html = '';
         
-        Object.entries(data.grocery_list).forEach(([department, items]) => {
-            const emoji = departmentEmojis[department] || '📦';
+        // Grocery list by department
+        for (const [department, items] of Object.entries(groceryList)) {
+            const emoji = departmentEmojis[department] || '🛒';
             const deptName = department.replace('_', ' ').replace(/\b\w/g, l => l.toUpperCase());
             
             html += `
                 <div class="grocery-department">
-                    <h3>${emoji} ${deptName}</h3>
+                    <h3>${emoji} ${deptName} (${items.length} items)</h3>
                     ${items.map(item => `
                         <div class="grocery-item">
-                            <input type="checkbox" id="item_${item.name.replace(/\s+/g, '_')}">
-                            <label for="item_${item.name.replace(/\s+/g, '_')}">
-                                <strong>${item.quantity}</strong> ${item.name}
-                                ${item.recipes.length > 1 ? `<br><small>Used in: ${item.recipes.join(', ')}</small>` : ''}
-                            </label>
+                            <input type="checkbox" id="item-${item.name.replace(/\s+/g, '-')}">
+                            <label for="item-${item.name.replace(/\s+/g, '-')}">${item.quantity} ${item.name}</label>
                         </div>
                     `).join('')}
                 </div>
             `;
-        });
-        
+        }
+
+        // Additional information
+        if (data.raw_data.equipment_reminders?.length > 0) {
+            html += `
+                <div class="grocery-department">
+                    <h3>⚙️ Equipment Reminders</h3>
+                    ${data.raw_data.equipment_reminders.map(reminder => `
+                        <div class="grocery-item">
+                            <span style="margin-left: 30px;">• ${reminder}</span>
+                        </div>
+                    `).join('')}
+                </div>
+            `;
+        }
+
+        if (data.raw_data.shopping_tips?.length > 0) {
+            html += `
+                <div class="grocery-department">
+                    <h3>💡 Shopping Tips</h3>
+                    ${data.raw_data.shopping_tips.map(tip => `
+                        <div class="grocery-item">
+                            <span style="margin-left: 30px;">• ${tip}</span>
+                        </div>
+                    `).join('')}
+                </div>
+            `;
+        }
+
+        if (data.raw_data.estimated_cost_range) {
+            html += `
+                <div class="grocery-department">
+                    <h3>💰 Estimated Cost: ${data.raw_data.estimated_cost_range}</h3>
+                </div>
+            `;
+        }
+
         content.innerHTML = html;
-        this.currentGroceryData = data;
-        document.getElementById('groceryModal').style.display = 'flex';
+        modal.style.display = 'flex';
+        
+        // Store formatted list for download
+        this.formattedGroceryList = data.formatted_list;
+        
+        this.showNotification('🎉 Your smart grocery list is ready!', 'success');
     }
-    
+
     downloadGroceryList() {
-        if (!this.currentGroceryData) return;
-        
-        const content = this.currentGroceryData.formatted_list;
-        const blob = new Blob([content], { type: 'text/markdown' });
-        const url = URL.createObjectURL(blob);
-        
+        if (!this.formattedGroceryList) return;
+
+        const blob = new Blob([this.formattedGroceryList], { type: 'text/plain' });
+        const url = window.URL.createObjectURL(blob);
         const a = document.createElement('a');
         a.href = url;
-        a.download = `grocery_list_${new Date().toISOString().split('T')[0]}.md`;
+        a.download = `weekly-grocery-list-${new Date().toISOString().split('T')[0]}.txt`;
         document.body.appendChild(a);
         a.click();
         document.body.removeChild(a);
-        URL.revokeObjectURL(url);
+        window.URL.revokeObjectURL(url);
+        
+        this.showNotification('📥 Grocery list downloaded successfully!', 'success');
     }
-    
-    closeModal() {
-        document.getElementById('groceryModal').style.display = 'none';
+
+    setupEventListeners() {
+        // Filter controls
+        ['proteinFilter', 'cuisineFilter', 'methodFilter'].forEach(filterId => {
+            document.getElementById(filterId).addEventListener('change', () => this.applyFilters());
+        });
+
+        // Grocery list generation
+        document.getElementById('generateGroceryBtn').addEventListener('click', () => this.generateGroceryList());
+
+        // Modal controls
+        document.getElementById('closeModal').addEventListener('click', () => {
+            document.getElementById('groceryModal').style.display = 'none';
+        });
+
+        document.getElementById('downloadBtn').addEventListener('click', () => this.downloadGroceryList());
+
+        // Close modal when clicking outside
+        document.getElementById('groceryModal').addEventListener('click', (e) => {
+            if (e.target.id === 'groceryModal') {
+                document.getElementById('groceryModal').style.display = 'none';
+            }
+        });
     }
-    
-    showLoading(show) {
-        document.getElementById('loadingSpinner').style.display = show ? 'flex' : 'none';
+
+    applyFilters() {
+        const proteinFilter = document.getElementById('proteinFilter').value;
+        const cuisineFilter = document.getElementById('cuisineFilter').value;
+        const methodFilter = document.getElementById('methodFilter').value;
+
+        let filtered = this.allRecipes;
+
+        if (proteinFilter) {
+            filtered = filtered.filter(recipe => recipe.protein === proteinFilter);
+        }
+
+        if (cuisineFilter) {
+            filtered = filtered.filter(recipe => recipe.cuisine === cuisineFilter);
+        }
+
+        if (methodFilter) {
+            filtered = filtered.filter(recipe => recipe.cooking_method === methodFilter);
+        }
+
+        this.renderRecipes(filtered);
     }
-    
+
+    showLoading(message = '🍳 Preparing your culinary adventure...') {
+        const overlay = document.getElementById('loadingOverlay');
+        const text = overlay.querySelector('p');
+        text.textContent = message;
+        overlay.style.display = 'flex';
+    }
+
+    hideLoading() {
+        document.getElementById('loadingOverlay').style.display = 'none';
+    }
+
+    showNotification(message, type = 'info') {
+        // Create notification element
+        const notification = document.createElement('div');
+        notification.style.cssText = `
+            position: fixed;
+            top: 20px;
+            right: 20px;
+            background: ${type === 'success' ? 'var(--sage-green)' : type === 'error' ? 'var(--warm-red)' : 'var(--primary-orange)'};
+            color: white;
+            padding: 15px 25px;
+            border-radius: 12px;
+            font-weight: 600;
+            z-index: 3000;
+            box-shadow: 0 8px 25px rgba(0,0,0,0.2);
+            transform: translateX(400px);
+            transition: transform 0.4s cubic-bezier(0.4, 0, 0.2, 1);
+            max-width: 350px;
+            font-family: 'Inter', sans-serif;
+        `;
+        notification.textContent = message;
+        
+        document.body.appendChild(notification);
+        
+        // Animate in
+        setTimeout(() => {
+            notification.style.transform = 'translateX(0)';
+        }, 100);
+        
+        // Animate out and remove
+        setTimeout(() => {
+            notification.style.transform = 'translateX(400px)';
+            setTimeout(() => {
+                if (notification.parentNode) {
+                    notification.parentNode.removeChild(notification);
+                }
+            }, 400);
+        }, 3000);
+    }
+
     showError(message) {
-        alert(message); // Simple error handling - could be improved with a proper modal
+        this.showNotification(message, 'error');
     }
 }
 
-// Initialize the recipe selector when the page loads
-let recipeSelector;
-document.addEventListener('DOMContentLoaded', () => {
-    recipeSelector = new RecipeSelector();
-});
+// Add CSS animation for slide-in effect
+const style = document.createElement('style');
+style.textContent = `
+    @keyframes slideIn {
+        from {
+            opacity: 0;
+            transform: translateY(20px);
+        }
+        to {
+            opacity: 1;
+            transform: translateY(0);
+        }
+    }
+`;
+document.head.appendChild(style);
+
+// Initialize the application
+const recipeSelector = new RecipeSelector();
 
