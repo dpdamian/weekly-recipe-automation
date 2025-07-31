@@ -51,20 +51,31 @@ class RecipeSelector {
         button.disabled = true;
         button.innerHTML = '🔄 Generating Fresh Recipes...';
         
-        // Clear current selections
+        // Clear current selections and recipes to start completely fresh
         this.selectedRecipes = [];
+        this.allRecipes = [];
+        this.renderRecipes(); // Clear the display immediately
+        this.updateUI();
         
         this.showLoading('🌐 Searching cooking websites for fresh gluten-free recipes...');
         
         try {
-            const response = await fetch('/api/recipe/weekly-suggestions?include_web=true');
+            // Force fresh recipe generation with timestamp to prevent caching
+            const response = await fetch(`/api/recipe/weekly-suggestions?include_web=true&fresh=true&timestamp=${Date.now()}`, {
+                method: 'GET',
+                headers: { 
+                    'Content-Type': 'application/json',
+                    'Cache-Control': 'no-cache'
+                }
+            });
+            
             if (!response.ok) {
                 throw new Error(`HTTP error! status: ${response.status}`);
             }
             const data = await response.json();
             
-            if (data.success) {
-                this.allRecipes = data.suggestions || [];
+            if (data.success && data.suggestions && data.suggestions.length > 0) {
+                this.allRecipes = data.suggestions;
                 this.renderRecipes();
                 this.updateUI();
                 
@@ -72,10 +83,11 @@ class RecipeSelector {
                 const summary = data.summary || {};
                 const webCount = summary.source_breakdown?.web_search || 0;
                 const favoriteCount = summary.source_breakdown?.user_favorite || 0;
+                const totalCount = this.allRecipes.length;
                 
                 this.showNotification(
-                    `🎉 Generated ${this.allRecipes.length} fresh recipes! ` +
-                    `(${webCount} new from cooking websites, ${favoriteCount} favorites)`, 
+                    `🎉 Generated ${totalCount} fresh recipes! ` +
+                    `(${webCount} new discoveries, ${favoriteCount} favorites) Ready for meal planning!`, 
                     'success'
                 );
                 
@@ -85,7 +97,7 @@ class RecipeSelector {
                     block: 'start' 
                 });
             } else {
-                throw new Error(data.error || 'Failed to generate recipes');
+                throw new Error(data.error || 'No recipes returned from server');
             }
         } catch (error) {
             console.error('Error generating fresh recipes:', error);
@@ -477,6 +489,16 @@ class RecipeSelector {
                                     ${this.getMethodEmoji(recipe.cooking_method)} ${recipe.cooking_method}
                                 </span>
                             </div>
+                            
+                            ${recipe.ingredients ? `
+                                <div class="recipe-ingredients-full">
+                                    <h5>📋 Ingredients:</h5>
+                                    <ul>
+                                        ${recipe.ingredients.map(ingredient => `<li>${ingredient}</li>`).join('')}
+                                    </ul>
+                                </div>
+                            ` : ''}
+                            
                             ${recipe.instructions ? `
                                 <div class="cooking-instructions">
                                     <h5>👨‍🍳 Cooking Instructions:</h5>
@@ -490,6 +512,14 @@ class RecipeSelector {
                                     <p>📖 <a href="${recipe.url || '#'}" target="_blank">View full recipe and instructions</a></p>
                                 </div>
                             `}
+                            
+                            ${recipe.url ? `
+                                <div class="recipe-link-footer">
+                                    <a href="${recipe.url}" target="_blank" class="full-recipe-link">
+                                        📖 View Full Recipe Online
+                                    </a>
+                                </div>
+                            ` : ''}
                         </div>
                     `).join('')}
                 </div>

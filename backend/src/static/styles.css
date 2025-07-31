@@ -1022,3 +1022,143 @@ header p {
     }
 }
 
+
+/* Enhanced Grocery List Styles for Complete Ingredients */
+.recipe-ingredients-full {
+    margin: 15px 0;
+    padding: 15px;
+    background: linear-gradient(135deg, #f0f8f0 0%, #e8f5e8 100%);
+    border-radius: 10px;
+    border-left: 4px solid var(--sage-green);
+}
+
+.recipe-ingredients-full h5 {
+    color: var(--sage-green);
+    font-family: 'Playfair Display', serif;
+    margin: 0 0 10px 0;
+    font-size: 1rem;
+    font-weight: 600;
+}
+
+.recipe-ingredients-full ul {
+    margin: 0;
+    padding-left: 20px;
+    list-style-type: disc;
+}
+
+.recipe-ingredients-full li {
+    margin-bottom: 6px;
+    line-height: 1.4;
+    color: #2d5a2d;
+    font-size: 0.9rem;
+    font-weight: 500;
+}
+
+.recipe-link-footer {
+    margin-top: 15px;
+    text-align: center;
+    padding-top: 15px;
+    border-top: 2px solid #e9ecef;
+}
+
+.full-recipe-link {
+    display: inline-block;
+    background: linear-gradient(135deg, var(--sage-green) 0%, #4a7c59 100%);
+    color: white !important;
+    text-decoration: none;
+    padding: 8px 16px;
+    border-radius: 15px;
+    font-weight: 600;
+    font-size: 0.85rem;
+    transition: all 0.3s ease;
+    box-shadow: 0 2px 8px rgba(0, 0, 0, 0.1);
+}
+
+.full-recipe-link:hover {
+    transform: translateY(-2px);
+    box-shadow: 0 4px 15px rgba(0, 0, 0, 0.2);
+    color: white !important;
+}
+
+.recipe-summary-card {
+    margin-bottom: 25px;
+    padding: 20px;
+    background: white;
+    border-radius: 15px;
+    box-shadow: 0 4px 15px rgba(0, 0, 0, 0.1);
+    border-left: 5px solid var(--warm-orange);
+}
+
+.recipe-summary-header h4 {
+    color: var(--warm-orange);
+    font-family: 'Playfair Display', serif;
+    margin: 0 0 8px 0;
+    font-size: 1.2rem;
+}
+
+.recipe-meta {
+    color: var(--soft-gray);
+    font-size: 0.9rem;
+    font-weight: 500;
+}
+
+.cooking-instructions {
+    margin: 15px 0;
+    padding: 15px;
+    background: linear-gradient(135deg, #fff8f0 0%, #fdf2e9 100%);
+    border-radius: 10px;
+    border-left: 4px solid var(--golden-yellow);
+}
+
+.cooking-instructions h5 {
+    color: var(--warm-orange);
+    font-family: 'Playfair Display', serif;
+    margin: 0 0 10px 0;
+    font-size: 1rem;
+    font-weight: 600;
+}
+
+.cooking-instructions ol {
+    margin: 0 0 10px 0;
+    padding-left: 20px;
+}
+
+.cooking-instructions li {
+    margin-bottom: 8px;
+    line-height: 1.4;
+    color: #8b4513;
+    font-size: 0.9rem;
+}
+
+.cook-time {
+    color: var(--sage-green);
+    font-weight: 600;
+    font-size: 0.9rem;
+    margin: 10px 0 0 0;
+    padding-top: 10px;
+    border-top: 1px solid #e9ecef;
+}
+
+/* Responsive adjustments */
+@media (max-width: 768px) {
+    .recipe-summary-card {
+        padding: 15px;
+        margin-bottom: 20px;
+    }
+    
+    .recipe-ingredients-full, .cooking-instructions {
+        padding: 12px;
+        margin: 12px 0;
+    }
+    
+    .recipe-ingredients-full li, .cooking-instructions li {
+        font-size: 0.85rem;
+        margin-bottom: 5px;
+    }
+    
+    .full-recipe-link {
+        padding: 6px 12px;
+        font-size: 0.8rem;
+    }
+}
+
