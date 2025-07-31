@@ -99,15 +99,21 @@ class RecipeSelector {
     }
 
     renderRecipes(filteredRecipes = null) {
-        const recipesToRender = filteredRecipes || this.allRecipes;
+        // Always filter out selected recipes from the display
+        const selectedIds = this.selectedRecipes.map(r => r.id);
+        let recipesToRender = filteredRecipes || this.allRecipes;
+        
+        // Remove selected recipes from the list
+        recipesToRender = recipesToRender.filter(recipe => !selectedIds.includes(recipe.id));
+        
         const grid = document.getElementById('recipesGrid');
         
         if (recipesToRender.length === 0) {
             grid.innerHTML = `
                 <div style="grid-column: 1 / -1; text-align: center; padding: 60px 20px; color: var(--soft-gray);">
                     <div style="font-size: 4em; margin-bottom: 20px;">🔍</div>
-                    <h3 style="font-family: 'Playfair Display', serif; margin-bottom: 10px;">No recipes found</h3>
-                    <p>Try adjusting your filters to discover more delicious options!</p>
+                    <h3 style="font-family: 'Playfair Display', serif; margin-bottom: 10px;">No more recipes available</h3>
+                    <p>All available recipes have been selected or filtered out. Try adjusting your filters!</p>
                 </div>
             `;
             return;
@@ -120,7 +126,7 @@ class RecipeSelector {
         const isSelected = this.selectedRecipes.some(r => r.id === recipe.id);
         const isDisabled = !isSelected && this.selectedRecipes.length >= this.maxSelections;
         
-        // Enhanced recipe card with cooking-themed styling
+        // Enhanced recipe card with complete recipe details
         return `
             <div class="recipe-card ${isSelected ? 'selected' : ''} ${isDisabled ? 'disabled' : ''}" 
                  data-recipe-id="${recipe.id}" 
@@ -136,13 +142,39 @@ class RecipeSelector {
                 </div>
                 
                 <div class="recipe-info">
-                    <p><strong>🥬 Vegetables:</strong> ${recipe.vegetables}</p>
-                    <p><strong>🌾 Starch:</strong> ${recipe.starch}</p>
+                    <p><strong>🥬 Vegetables:</strong> ${recipe.vegetables || 'Mixed vegetables'}</p>
+                    <p><strong>🌾 Starch:</strong> ${recipe.starch || 'Rice or quinoa'}</p>
                     <p><strong>⏱️ Prep Time:</strong> ${recipe.prep_time} minutes</p>
                     <p><strong>👨‍🍳 Difficulty:</strong> ${this.getDifficultyDisplay(recipe.difficulty)}</p>
                 </div>
+
+                ${recipe.ingredients ? `
+                    <div class="recipe-ingredients">
+                        <h4>📋 Ingredients:</h4>
+                        <ul>
+                            ${recipe.ingredients.slice(0, 6).map(ingredient => `<li>${ingredient}</li>`).join('')}
+                            ${recipe.ingredients.length > 6 ? `<li><em>...and ${recipe.ingredients.length - 6} more</em></li>` : ''}
+                        </ul>
+                    </div>
+                ` : ''}
+
+                ${recipe.instructions ? `
+                    <div class="recipe-instructions">
+                        <h4>👨‍🍳 Quick Instructions:</h4>
+                        <ol>
+                            ${recipe.instructions.slice(0, 3).map(step => `<li>${step}</li>`).join('')}
+                            ${recipe.instructions.length > 3 ? `<li><em>...${recipe.instructions.length - 3} more steps</em></li>` : ''}
+                        </ol>
+                    </div>
+                ` : ''}
                 
-                ${recipe.url ? `<a href="${recipe.url}" target="_blank" class="recipe-link">View Full Recipe</a>` : ''}
+                ${recipe.url ? `
+                    <div class="recipe-link-container">
+                        <a href="${recipe.url}" target="_blank" class="recipe-link" onclick="event.stopPropagation();">
+                            📖 View Full Recipe & Instructions
+                        </a>
+                    </div>
+                ` : ''}
             </div>
         `;
     }

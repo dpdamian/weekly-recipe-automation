@@ -1,193 +1,17 @@
 #!/usr/bin/env python3
 """
-Simple Recipe Generator
-Provides reliable recipe suggestions without complex web scraping
+Complete Recipe Update Script
+Updates all recipes in simple_recipe_generator.py with vegetables, starch, instructions, and real URLs
 """
 
-import json
-import random
-from datetime import datetime
-from typing import List, Dict, Any
+import re
 
-class SimpleRecipeGenerator:
-    def __init__(self):
-        self.recipe_templates = {
-            'chicken': [
-                {
-                    'name': 'Honey Garlic Chicken with Broccoli and Rice',
-                    'protein': 'chicken',
-                    'vegetables': 'broccoli florets',
-                    'starch': 'jasmine rice',
-                    'cuisine': 'asian',
-                    'cooking_method': 'stove',
-                    'prep_time': 15,
-                    'cook_time': 25,
-                    'difficulty': 'easy',
-                    'ingredients': [
-                        '1 lb chicken breast, cubed',
-                        '2 cups broccoli florets',
-                        '1 cup jasmine rice',
-                        '3 tbsp honey',
-                        '3 cloves garlic, minced',
-                        '2 tbsp gluten-free soy sauce',
-                        '1 tbsp olive oil',
-                        'Salt and pepper to taste'
-                    ],
-                    'instructions': [
-                        'Cook jasmine rice according to package directions.',
-                        'Heat olive oil in a large skillet over medium-high heat.',
-                        'Season chicken with salt and pepper, add to skillet.',
-                        'Cook chicken for 5-6 minutes until golden brown.',
-                        'Add minced garlic and cook for 1 minute until fragrant.',
-                        'Add broccoli florets and cook for 3-4 minutes.',
-                        'In a small bowl, mix honey and soy sauce.',
-                        'Pour sauce over chicken and broccoli, stir to coat.',
-                        'Cook for 2-3 minutes until sauce thickens.',
-                        'Serve over rice and enjoy!'
-                    ],
-                    'url': 'https://damndelicious.net/2014/04/09/honey-garlic-chicken/'
-                },
-                {
-                    'name': 'Mediterranean Chicken with Vegetables and Quinoa',
-                    'protein': 'chicken',
-                    'vegetables': 'zucchini and bell pepper',
-                    'starch': 'quinoa',
-                    'cuisine': 'mediterranean',
-                    'cooking_method': 'oven',
-                    'prep_time': 20,
-                    'cook_time': 30,
-                    'difficulty': 'easy',
-                    'ingredients': [
-                        '1 lb chicken thighs',
-                        '1 cup quinoa',
-                        '1 zucchini, sliced',
-                        '1 bell pepper, chopped',
-                        '2 tbsp olive oil',
-                        '1 tsp oregano',
-                        '1 lemon, juiced',
-                        'Salt and pepper to taste'
-                    ],
-                    'instructions': [
-                        'Preheat oven to 400°F (200°C).',
-                        'Cook quinoa according to package directions.',
-                        'Season chicken thighs with salt, pepper, and oregano.',
-                        'Heat 1 tbsp olive oil in an oven-safe skillet.',
-                        'Sear chicken thighs skin-side down for 5 minutes.',
-                        'Flip chicken and add vegetables around the pan.',
-                        'Drizzle vegetables with remaining olive oil and lemon juice.',
-                        'Transfer skillet to oven and bake for 25 minutes.',
-                        'Check that chicken reaches 165°F internal temperature.',
-                        'Serve chicken and vegetables over quinoa.'
-                    ],
-                    'url': 'https://www.mediterraneanliving.com/recipe/items/one-pan-mediterranean-chicken-quinoa/'
-                },
-                {
-                    'name': 'Buffalo Chicken Rice Bowl',
-                    'protein': 'chicken',
-                    'vegetables': 'mixed vegetables and avocado',
-                    'starch': 'brown rice',
-                    'cuisine': 'american',
-                    'cooking_method': 'air_fryer',
-                    'prep_time': 10,
-                    'cook_time': 20,
-                    'difficulty': 'easy',
-                    'ingredients': [
-                        '1 lb chicken breast',
-                        '1 cup brown rice',
-                        '1 cup mixed vegetables',
-                        '3 tbsp buffalo sauce (gluten-free)',
-                        '1 tbsp olive oil',
-                        '1 avocado, sliced',
-                        'Ranch dressing (gluten-free)',
-                        'Salt and pepper to taste'
-                    ],
-                    'instructions': [
-                        'Cook brown rice according to package directions.',
-                        'Season chicken breast with salt and pepper.',
-                        'Preheat air fryer to 375°F (190°C).',
-                        'Brush chicken with olive oil and cook in air fryer for 15-18 minutes.',
-                        'Check that chicken reaches 165°F internal temperature.',
-                        'Let chicken rest for 5 minutes, then slice.',
-                        'Toss sliced chicken with buffalo sauce.',
-                        'Steam or sauté mixed vegetables until tender.',
-                        'Assemble bowls with rice, vegetables, buffalo chicken, and avocado.',
-                        'Drizzle with ranch dressing and serve immediately.'
-                    ],
-                    'url': 'https://www.budgetbytes.com/buffalo-chicken-bowls/'
-                }
-            ],
-            'beef': [
-                {
-                    'name': 'Mongolian Beef with Snap Peas and Rice',
-                    'protein': 'beef',
-                    'vegetables': 'snap peas',
-                    'starch': 'jasmine rice',
-                    'cuisine': 'asian',
-                    'cooking_method': 'stove',
-                    'prep_time': 15,
-                    'cook_time': 20,
-                    'difficulty': 'medium',
-                    'ingredients': [
-                        '1 lb beef sirloin, sliced thin',
-                        '1 cup snap peas',
-                        '1 cup jasmine rice',
-                        '2 tbsp gluten-free soy sauce',
-                        '1 tbsp brown sugar',
-                        '2 cloves garlic, minced',
-                        '1 tbsp cornstarch',
-                        '2 tbsp vegetable oil'
-                    ],
-                    'instructions': [
-                        'Cook jasmine rice according to package directions.',
-                        'Slice beef sirloin into thin strips against the grain.',
-                        'Toss beef with cornstarch to coat evenly.',
-                        'Heat 1 tbsp oil in a large skillet over high heat.',
-                        'Cook beef in batches for 2-3 minutes until browned.',
-                        'Remove beef and set aside.',
-                        'Add remaining oil and snap peas to the skillet.',
-                        'Cook snap peas for 2-3 minutes until crisp-tender.',
-                        'Mix soy sauce, brown sugar, and garlic in a small bowl.',
-                        'Return beef to skillet, add sauce, and stir for 1 minute.',
-                        'Serve immediately over rice.'
-                    ],
-                    'url': 'https://dinnerthendessert.com/mongolian-beef/'
-                },
-                {
-                    'name': 'Mediterranean Beef and Vegetable Skillet',
-                    'protein': 'beef',
-                    'vegetables': 'eggplant and tomato',
-                    'starch': 'quinoa',
-                    'cuisine': 'mediterranean',
-                    'cooking_method': 'stove',
-                    'prep_time': 15,
-                    'cook_time': 25,
-                    'difficulty': 'easy',
-                    'ingredients': [
-                        '1 lb ground beef',
-                        '1 cup quinoa',
-                        '1 eggplant, diced',
-                        '1 tomato, chopped',
-                        '2 tbsp olive oil',
-                        '1 tsp oregano',
-                        '1/2 cup feta cheese',
-                        'Salt and pepper to taste'
-                    ],
-                    'instructions': [
-                        'Cook quinoa according to package directions.',
-                        'Heat olive oil in a large skillet over medium heat.',
-                        'Add diced eggplant and cook for 5-6 minutes until softened.',
-                        'Add ground beef and cook until browned, breaking it up.',
-                        'Season with salt, pepper, and oregano.',
-                        'Add chopped tomato and cook for 3-4 minutes.',
-                        'Simmer for 5 minutes until flavors meld.',
-                        'Remove from heat and sprinkle with feta cheese.',
-                        'Let stand for 2 minutes to melt cheese slightly.',
-                        'Serve over quinoa and enjoy!'
-                    ],
-                    'url': 'https://www.mediterraneanliving.com/recipe/items/mediterranean-ground-beef-skillet/'
-                }
-            ],
-            'salmon': [
+# Read the current file
+with open('simple_recipe_generator.py', 'r') as f:
+    content = f.read()
+
+# Define the complete updated recipes with all required fields
+updated_recipes = '''            'salmon': [
                 {
                     'name': 'Teriyaki Salmon with Asparagus and Rice',
                     'protein': 'salmon',
@@ -361,7 +185,11 @@ class SimpleRecipeGenerator:
                     ],
                     'url': 'https://www.foodnetwork.com/recipes/ellie-krieger/herb-crusted-pork-tenderloin-with-roasted-vegetables-recipe-1946783'
                 }
-            ]
+            ]'''
+
+# Replace the salmon section and everything after it
+pattern = r"            'salmon': \[.*"
+replacement = updated_recipes + '''
         }
     
     def generate_recipes(self, count=15):
@@ -389,4 +217,14 @@ if __name__ == "__main__":
     
     print(f"Generated {len(recipes)} recipes:")
     for recipe in recipes:
-        print(f"- {recipe['name']} ({recipe['protein']}, {recipe['vegetables']}, {recipe['starch']})")
+        print(f"- {recipe['name']} ({recipe['protein']}, {recipe['vegetables']}, {recipe['starch']})")'''
+
+# Apply the replacement
+new_content = re.sub(pattern, replacement, content, flags=re.DOTALL)
+
+# Write the updated content back
+with open('simple_recipe_generator.py', 'w') as f:
+    f.write(new_content)
+
+print("✅ Updated all recipes with vegetables, starch, instructions, and real URLs!")
+

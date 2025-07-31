@@ -927,3 +927,98 @@ header p {
     }
 }
 
+
+/* Enhanced Recipe Card Styles */
+.recipe-ingredients, .recipe-instructions {
+    margin-top: 15px;
+    padding: 15px;
+    background: linear-gradient(135deg, #f8f9fa 0%, #e9ecef 100%);
+    border-radius: 10px;
+    border-left: 4px solid var(--golden-yellow);
+}
+
+.recipe-ingredients h4, .recipe-instructions h4 {
+    color: var(--warm-orange);
+    font-family: 'Playfair Display', serif;
+    margin: 0 0 10px 0;
+    font-size: 1rem;
+}
+
+.recipe-ingredients ul {
+    margin: 0;
+    padding-left: 20px;
+    list-style-type: disc;
+}
+
+.recipe-ingredients li {
+    margin-bottom: 5px;
+    line-height: 1.4;
+    color: #333;
+    font-size: 0.9rem;
+}
+
+.recipe-instructions ol {
+    margin: 0;
+    padding-left: 20px;
+}
+
+.recipe-instructions li {
+    margin-bottom: 8px;
+    line-height: 1.4;
+    color: #333;
+    font-size: 0.9rem;
+}
+
+.recipe-ingredients li em, .recipe-instructions li em {
+    color: var(--sage-green);
+    font-style: italic;
+}
+
+.recipe-link-container {
+    margin-top: 15px;
+    text-align: center;
+    padding-top: 15px;
+    border-top: 2px solid var(--sage-green);
+}
+
+.recipe-link {
+    display: inline-block;
+    background: var(--warm-gradient);
+    color: white !important;
+    text-decoration: none;
+    padding: 10px 20px;
+    border-radius: 20px;
+    font-weight: 600;
+    font-size: 0.9rem;
+    transition: all 0.3s ease;
+    box-shadow: 0 2px 8px rgba(0, 0, 0, 0.1);
+}
+
+.recipe-link:hover {
+    transform: translateY(-2px);
+    box-shadow: 0 4px 15px rgba(0, 0, 0, 0.2);
+    color: white !important;
+}
+
+/* Responsive adjustments for enhanced recipe cards */
+@media (max-width: 768px) {
+    .recipe-ingredients, .recipe-instructions {
+        padding: 12px;
+        margin-top: 12px;
+    }
+    
+    .recipe-ingredients h4, .recipe-instructions h4 {
+        font-size: 0.9rem;
+    }
+    
+    .recipe-ingredients li, .recipe-instructions li {
+        font-size: 0.85rem;
+        margin-bottom: 4px;
+    }
+    
+    .recipe-link {
+        padding: 8px 16px;
+        font-size: 0.85rem;
+    }
+}
+
