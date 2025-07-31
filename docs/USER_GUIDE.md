@@ -2,11 +2,12 @@
 
 ## 🍽️ Welcome to Your Personal Recipe Assistant!
 
-This system automatically provides you with 15+ gluten-free dinner recipe suggestions every Sunday, helps you select 4 recipes for the week, and generates an organized grocery list to make shopping efficient.
+This system provides you with 15+ gluten-free dinner recipe suggestions on-demand, helps you select 4 recipes for the week, and generates an organized grocery list to make shopping efficient. Generate fresh recipes anytime you want to plan your meals!
 
 ## 🌟 Key Features
 
-- **Weekly Recipe Suggestions**: Get 15+ new gluten-free dinner recipes every Sunday
+- **On-Demand Recipe Generation**: Get 15+ new gluten-free dinner recipes instantly with one click
+- **Fresh Web Recipes**: Searches top cooking websites for the latest recipe ideas
 - **Smart Variety**: Ensures protein variety (no more than 2 of the same protein per week)
 - **User Preferences**: Learns from your selections and ratings
 - **Ingredient Optimization**: Suggests recipes with overlapping ingredients to reduce shopping
@@ -16,16 +17,17 @@ This system automatically provides you with 15+ gluten-free dinner recipe sugges
 
 ## 📅 How It Works
 
-### Every Sunday:
-1. **Automatic Recipe Generation**: The system generates 15+ recipe suggestions
-2. **Email/Notification**: You'll receive your weekly recipe list
-3. **Recipe Selection**: Use the web interface to select 4 recipes
+### When You Want to Plan Meals:
+1. **Generate Fresh Recipes**: Click the "Generate Fresh Recipes" button anytime
+2. **Web Recipe Search**: System searches cooking websites for new gluten-free recipes
+3. **Recipe Selection**: Use the web interface to select 4 recipes from 15+ options
 4. **Grocery List**: Get an organized shopping list for your selected recipes
 
-### During the Week:
+### Anytime Features:
 - **Rate Recipes**: After cooking, rate recipes to improve future suggestions
 - **Track Preferences**: The system learns what you like and dislike
 - **Equipment Reminders**: Get reminders about which cooking equipment you'll need
+- **Flexible Planning**: Generate recipes whenever you need to plan meals
 
 ## 🖥️ Using the Web Interface
 
@@ -34,11 +36,12 @@ This system automatically provides you with 15+ gluten-free dinner recipe sugges
 - The interface works on both desktop and mobile devices
 
 ### Selecting Recipes
-1. **Browse Suggestions**: View all 15+ recipe suggestions with details
-2. **Use Filters**: Filter by protein type, cuisine, or cooking method
-3. **Select Recipes**: Click on recipe cards to select them (up to 4)
-4. **View Selection**: See your selected recipes in the "Weekly Menu" section
-5. **Check Efficiency**: View ingredient overlap analysis for cost savings
+1. **Generate Fresh Recipes**: Click the "🌟 Generate Fresh Recipes" button to get new suggestions
+2. **Browse Suggestions**: View all 15+ recipe suggestions with details from cooking websites and your favorites
+3. **Use Filters**: Filter by protein type, cuisine, or cooking method
+4. **Select Recipes**: Click on recipe cards to select them (up to 4)
+5. **View Selection**: See your selected recipes in the "Weekly Menu" section
+6. **Check Efficiency**: View ingredient overlap analysis for cost savings
 
 ### Generating Grocery List
 1. **Complete Selection**: Select exactly 4 recipes

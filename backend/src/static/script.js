@@ -43,6 +43,61 @@ class RecipeSelector {
         }
     }
 
+    async generateFreshRecipes() {
+        const button = document.getElementById('generateRecipesBtn');
+        const originalText = button.innerHTML;
+        
+        // Disable button and show loading state
+        button.disabled = true;
+        button.innerHTML = '🔄 Generating Fresh Recipes...';
+        
+        // Clear current selections
+        this.selectedRecipes = [];
+        
+        this.showLoading('🌐 Searching cooking websites for fresh gluten-free recipes...');
+        
+        try {
+            const response = await fetch('/api/recipe/weekly-suggestions?include_web=true');
+            if (!response.ok) {
+                throw new Error(`HTTP error! status: ${response.status}`);
+            }
+            const data = await response.json();
+            
+            if (data.success) {
+                this.allRecipes = data.suggestions || [];
+                this.renderRecipes();
+                this.updateUI();
+                
+                // Show success message with statistics
+                const summary = data.summary || {};
+                const webCount = summary.source_breakdown?.web_search || 0;
+                const favoriteCount = summary.source_breakdown?.user_favorite || 0;
+                
+                this.showNotification(
+                    `🎉 Generated ${this.allRecipes.length} fresh recipes! ` +
+                    `(${webCount} new from cooking websites, ${favoriteCount} favorites)`, 
+                    'success'
+                );
+                
+                // Scroll to recipes section
+                document.querySelector('.recipes-section').scrollIntoView({ 
+                    behavior: 'smooth', 
+                    block: 'start' 
+                });
+            } else {
+                throw new Error(data.error || 'Failed to generate recipes');
+            }
+        } catch (error) {
+            console.error('Error generating fresh recipes:', error);
+            this.showError('🍽️ Sorry, we had trouble generating fresh recipes. Please try again in a moment.');
+        } finally {
+            // Re-enable button
+            button.disabled = false;
+            button.innerHTML = originalText;
+            this.hideLoading();
+        }
+    }
+
     renderRecipes(filteredRecipes = null) {
         const recipesToRender = filteredRecipes || this.allRecipes;
         const grid = document.getElementById('recipesGrid');
@@ -391,6 +446,9 @@ class RecipeSelector {
     }
 
     setupEventListeners() {
+        // Generate fresh recipes button
+        document.getElementById('generateRecipesBtn').addEventListener('click', () => this.generateFreshRecipes());
+        
         // Filter controls
         ['proteinFilter', 'cuisineFilter', 'methodFilter'].forEach(filterId => {
             document.getElementById(filterId).addEventListener('change', () => this.applyFilters());

@@ -9,8 +9,9 @@ An intelligent meal planning system that automatically generates 15+ gluten-free
 
 ## ✨ Features
 
-### 🤖 **Automated Weekly Suggestions**
-- **15+ Recipe Suggestions** every Sunday at 9:00 AM
+### 🤖 **On-Demand Recipe Generation**
+- **15+ Recipe Suggestions** generated instantly with one click
+- **Fresh Web Recipes** - Searches top cooking websites for new ideas
 - **Gluten-Free Guarantee** - All recipes are verified gluten-free
 - **Protein Variety** - Never more than 2 of the same protein per week
 - **Smart Learning** - Adapts to your preferences over time
