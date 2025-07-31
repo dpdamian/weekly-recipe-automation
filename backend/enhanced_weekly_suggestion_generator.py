@@ -9,94 +9,118 @@ import random
 from datetime import datetime, timedelta
 from recipe_manager import RecipeManager
 from recipe_search_engine import RecipeSearchEngine
-from enhanced_web_recipe_search import EnhancedWebRecipeSearcher
+from simple_recipe_generator import SimpleRecipeGenerator
 
 class EnhancedWeeklySuggestionGenerator:
     def __init__(self):
         self.recipe_manager = RecipeManager()
         self.search_engine = RecipeSearchEngine()
-        self.web_searcher = EnhancedWebRecipeSearcher()
+        self.simple_generator = SimpleRecipeGenerator()
         self.min_suggestions = 15
         self.max_suggestions = 20
     
     def generate_weekly_suggestions(self, week_date=None, include_web_recipes=True):
-        """Generate enhanced weekly recipe suggestions with web recipes"""
+        """Generate enhanced weekly recipe suggestions with reliable fallback"""
         if week_date is None:
             week_date = datetime.now().strftime('%Y-%m-%d')
         
         print(f"🍽️ Generating enhanced weekly suggestions for week of {week_date}")
         
-        # Get user data
-        user_preferences = self.recipe_manager.recipe_db.get('user_preferences', {})
-        recent_selections = self.recipe_manager.get_recent_selections(weeks=4)
-        user_favorites = self.recipe_manager.get_user_favorites()
-        
-        suggestions = []
-        
-        # 1. Include user favorites (25% of suggestions)
-        favorite_count = max(3, int(self.min_suggestions * 0.25))
-        if user_favorites:
-            selected_favorites = random.sample(user_favorites, min(favorite_count, len(user_favorites)))
-            suggestions.extend(selected_favorites)
-            print(f"   ⭐ Added {len(selected_favorites)} user favorites")
-        
-        # Get existing recipe recommendations (25% of suggestions)
-        existing_count = max(3, int(self.min_suggestions * 0.25))
-        
-        # Handle recent_selections data structure
-        recent_names = []
-        if recent_selections:
-            for item in recent_selections:
-                if isinstance(item, dict):
-                    recent_names.append(item.get('name', ''))
-                elif isinstance(item, str):
-                    recent_names.append(item)
-        
-        existing_recommendations = self.search_engine.get_recipe_recommendations(
-            user_preferences, 
-            recent_selections=recent_names
-        )
-        suggestions.extend(existing_recommendations[:existing_count])
-        print(f"   📚 Added {min(existing_count, len(existing_recommendations))} existing recipe recommendations")
-        
-        # 3. Search web for fresh recipes (50% of suggestions)
-        if include_web_recipes:
-            web_count = self.max_suggestions - len(suggestions)
-            web_recipes = self.web_searcher.search_cooking_websites(max_recipes=web_count + 5)
+        try:
+            # Get user data
+            user_preferences = self.recipe_manager.recipe_db.get('user_preferences', {})
+            recent_selections = self.recipe_manager.get_recent_selections(weeks=4)
+            user_favorites = self.recipe_manager.get_user_favorites()
             
-            # Filter web recipes to ensure variety
-            filtered_web_recipes = self._filter_web_recipes_for_variety(
-                web_recipes, 
-                existing_suggestions=suggestions,
-                target_count=web_count
+            suggestions = []
+            
+            # 1. Include user favorites (25% of suggestions)
+            favorite_count = max(3, int(self.min_suggestions * 0.25))
+            if user_favorites:
+                selected_favorites = random.sample(user_favorites, min(favorite_count, len(user_favorites)))
+                suggestions.extend(selected_favorites)
+                print(f"   ⭐ Added {len(selected_favorites)} user favorites")
+            
+            # 2. Get existing recipe recommendations (25% of suggestions)
+            existing_count = max(3, int(self.min_suggestions * 0.25))
+            
+            # Handle recent_selections data structure
+            recent_names = []
+            if recent_selections:
+                for item in recent_selections:
+                    if isinstance(item, dict):
+                        recent_names.append(item.get('name', ''))
+                    elif isinstance(item, str):
+                        recent_names.append(item)
+            
+            existing_recommendations = self.search_engine.get_recipe_recommendations(
+                user_preferences, 
+                recent_selections=recent_names
             )
+            suggestions.extend(existing_recommendations[:existing_count])
+            print(f"   📚 Added {min(existing_count, len(existing_recommendations))} existing recipe recommendations")
             
-            suggestions.extend(filtered_web_recipes)
-            print(f"   🌐 Added {len(filtered_web_recipes)} fresh recipes from cooking websites")
-        
-        # 4. Ensure protein variety and balance
-        suggestions = self._ensure_protein_variety(suggestions)
-        
-        # 5. Optimize for ingredient overlap
-        suggestions = self._optimize_ingredient_overlap(suggestions)
-        
-        # 6. Limit to target number and shuffle
-        suggestions = suggestions[:self.max_suggestions]
-        random.shuffle(suggestions)
-        
-        # 7. Add metadata
-        for i, recipe in enumerate(suggestions, 1):
-            recipe['suggestion_number'] = i
-            recipe['week_date'] = week_date
-            recipe['suggested_date'] = datetime.now().isoformat()
-        
-        # 8. Save suggestions
-        self.save_weekly_suggestions(suggestions, week_date)
-        
-        print(f"✅ Generated {len(suggestions)} diverse weekly suggestions")
-        self._print_suggestion_summary(suggestions)
-        
-        return suggestions
+            # 3. Generate fresh recipes using simple generator (reliable fallback)
+            remaining_count = self.max_suggestions - len(suggestions)
+            if remaining_count > 0:
+                fresh_recipes = self.simple_generator.generate_recipes(remaining_count + 5)
+                
+                # Filter to avoid duplicates with existing suggestions
+                existing_names = {recipe.get('name', '').lower() for recipe in suggestions}
+                unique_fresh = [r for r in fresh_recipes if r.get('name', '').lower() not in existing_names]
+                
+                suggestions.extend(unique_fresh[:remaining_count])
+                print(f"   🌟 Added {len(unique_fresh[:remaining_count])} fresh curated recipes")
+            
+            # 4. Ensure we have enough suggestions
+            if len(suggestions) < self.min_suggestions:
+                additional_needed = self.min_suggestions - len(suggestions)
+                additional_recipes = self.simple_generator.generate_recipes(additional_needed)
+                suggestions.extend(additional_recipes)
+                print(f"   ➕ Added {len(additional_recipes)} additional recipes to reach minimum")
+            
+            # 5. Ensure protein variety and balance
+            suggestions = self._ensure_protein_variety(suggestions)
+            
+            # 6. Optimize for ingredient overlap
+            suggestions = self._optimize_ingredient_overlap(suggestions)
+            
+            # 7. Limit to target number and shuffle
+            suggestions = suggestions[:self.max_suggestions]
+            random.shuffle(suggestions)
+            
+            # 8. Add metadata
+            for i, recipe in enumerate(suggestions, 1):
+                recipe['suggestion_number'] = i
+                recipe['week_date'] = week_date
+                recipe['suggested_date'] = datetime.now().isoformat()
+                if 'source' not in recipe:
+                    recipe['source'] = 'curated_collection'
+            
+            # 9. Save suggestions
+            self.save_weekly_suggestions(suggestions, week_date)
+            
+            print(f"✅ Generated {len(suggestions)} diverse weekly suggestions")
+            self._print_suggestion_summary(suggestions)
+            
+            return suggestions
+            
+        except Exception as e:
+            print(f"❌ Error in enhanced suggestion generation: {str(e)}")
+            print("🔄 Falling back to simple recipe generation...")
+            
+            # Complete fallback to simple generator
+            fallback_recipes = self.simple_generator.generate_recipes(self.min_suggestions)
+            
+            # Add metadata
+            for i, recipe in enumerate(fallback_recipes, 1):
+                recipe['suggestion_number'] = i
+                recipe['week_date'] = week_date
+                recipe['suggested_date'] = datetime.now().isoformat()
+                recipe['source'] = 'fallback_collection'
+            
+            print(f"✅ Generated {len(fallback_recipes)} fallback recipes")
+            return fallback_recipes
     
     def _filter_web_recipes_for_variety(self, web_recipes, existing_suggestions, target_count):
         """Filter web recipes to ensure variety and avoid duplicates"""
