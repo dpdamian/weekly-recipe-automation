@@ -135,6 +135,11 @@ class RecipeSelector {
     }
 
     createRecipeCard(recipe) {
+        // Ensure recipe has a unique ID
+        if (!recipe.id) {
+            recipe.id = recipe.name.replace(/[^a-zA-Z0-9]/g, '_').toLowerCase();
+        }
+        
         const isSelected = this.selectedRecipes.some(r => r.id === recipe.id);
         const isDisabled = !isSelected && this.selectedRecipes.length >= this.maxSelections;
         

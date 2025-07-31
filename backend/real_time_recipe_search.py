@@ -20,6 +20,7 @@ class RealTimeRecipeSearch:
         self.web_recipe_sources = [
             # Chicken recipes from search results
             {
+                'id': 'gluten_free_chicken_rice_casserole',
                 'name': 'Gluten-Free Chicken and Rice Casserole',
                 'protein': 'chicken',
                 'vegetables': 'mixed vegetables',
@@ -47,6 +48,7 @@ class RealTimeRecipeSearch:
                 ]
             },
             {
+                'id': 'gluten_free_chicken_broccoli_cheddar_rice',
                 'name': 'Gluten-Free Chicken Broccoli Cheddar Rice',
                 'protein': 'chicken',
                 'vegetables': 'broccoli',
@@ -74,6 +76,7 @@ class RealTimeRecipeSearch:
                 ]
             },
             {
+                'id': 'one_pot_chicken_and_rice',
                 'name': 'One Pot Chicken and Rice',
                 'protein': 'chicken',
                 'vegetables': 'carrots and celery',
@@ -102,6 +105,7 @@ class RealTimeRecipeSearch:
                 ]
             },
             {
+                'id': 'gluten_free_chicken_stir_fry',
                 'name': 'Gluten-Free Chicken Stir-Fry',
                 'protein': 'chicken',
                 'vegetables': 'bell peppers and snap peas',
@@ -131,6 +135,7 @@ class RealTimeRecipeSearch:
             },
             # Beef recipes from search results
             {
+                'id': 'gluten_free_beef_and_broccoli_stir_fry',
                 'name': 'Gluten-Free Beef and Broccoli Stir Fry',
                 'protein': 'beef',
                 'vegetables': 'broccoli',
@@ -159,6 +164,7 @@ class RealTimeRecipeSearch:
                 ]
             },
             {
+                'id': 'ground_beef_and_rice_casserole',
                 'name': 'Ground Beef and Rice Casserole',
                 'protein': 'beef',
                 'vegetables': 'corn and green beans',
@@ -187,6 +193,7 @@ class RealTimeRecipeSearch:
                 ]
             },
             {
+                'id': 'gluten_free_mongolian_beef',
                 'name': 'Gluten-Free Mongolian Beef',
                 'protein': 'beef',
                 'vegetables': 'green onions and bell peppers',
@@ -215,6 +222,7 @@ class RealTimeRecipeSearch:
                 ]
             },
             {
+                'id': 'korean_beef_bowl',
                 'name': 'Korean Beef Bowl',
                 'protein': 'beef',
                 'vegetables': 'carrots and spinach',
@@ -244,6 +252,7 @@ class RealTimeRecipeSearch:
             },
             # Salmon recipes from search results
             {
+                'id': 'honey_garlic_salmon_with_vegetables',
                 'name': 'Honey Garlic Salmon with Vegetables',
                 'protein': 'salmon',
                 'vegetables': 'asparagus and bell peppers',
@@ -272,6 +281,7 @@ class RealTimeRecipeSearch:
                 ]
             },
             {
+                'id': 'salmon_stir_fry_with_teriyaki_sauce',
                 'name': 'Salmon Stir Fry with Teriyaki Sauce',
                 'protein': 'salmon',
                 'vegetables': 'broccoli and carrots',
@@ -300,6 +310,7 @@ class RealTimeRecipeSearch:
                 ]
             },
             {
+                'id': 'mediterranean_fish_one_pot',
                 'name': 'Mediterranean Fish One Pot',
                 'protein': 'white fish',
                 'vegetables': 'tomatoes and zucchini',
@@ -328,6 +339,7 @@ class RealTimeRecipeSearch:
                 ]
             },
             {
+                'id': 'salt_and_pepper_fish_with_scallion_rice',
                 'name': 'Salt & Pepper Fish with Scallion Rice',
                 'protein': 'white fish',
                 'vegetables': 'scallions and bok choy',
