@@ -1,0 +1,20 @@
+services:
+  - type: web
+    name: weekly-recipe-automation
+    env: python
+    region: oregon
+    plan: free
+    buildCommand: pip install -r requirements.txt
+    startCommand: python src/main.py
+    envVars:
+      - key: FLASK_ENV
+        value: production
+      - key: PYTHONPATH
+        value: /opt/render/project/src/backend
+      - key: PORT
+        value: 5000
+    disk:
+      name: recipe-data
+      mountPath: /opt/render/project/src/data
+      sizeGB: 1
+
