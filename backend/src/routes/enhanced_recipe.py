@@ -7,7 +7,7 @@ import os
 backend_dir = os.path.dirname(os.path.dirname(os.path.dirname(__file__)))
 sys.path.insert(0, backend_dir)
 
-from enhanced_weekly_suggestion_generator import EnhancedWeeklySuggestionGenerator
+from enhanced_weekly_suggestion_generator_v2 import EnhancedWeeklySuggestionGeneratorV2
 from integrated_grocery_system import IntegratedGrocerySystem
 from simple_grocery_generator import SimpleGroceryGenerator
 from recipe_manager import RecipeManager
@@ -17,7 +17,7 @@ from enhanced_web_recipe_search import EnhancedWebRecipeSearcher
 enhanced_recipe_bp = Blueprint('enhanced_recipe', __name__)
 
 # Initialize enhanced systems
-enhanced_suggestion_generator = EnhancedWeeklySuggestionGenerator()
+enhanced_suggestion_generator = EnhancedWeeklySuggestionGeneratorV2()
 grocery_system = IntegratedGrocerySystem()
 simple_grocery_generator = SimpleGroceryGenerator()
 recipe_manager = RecipeManager()
@@ -31,79 +31,63 @@ def get_weekly_suggestions():
     try:
         week_date = request.args.get('week_date')
         include_web = request.args.get('include_web', 'true').lower() == 'true'
+        count = int(request.args.get('count', 20))
         
-        suggestions = enhanced_suggestion_generator.generate_weekly_suggestions(
-            week_date=week_date,
-            include_web_recipes=include_web
+        result = enhanced_suggestion_generator.generate_weekly_suggestions(
+            count=count,
+            include_web=include_web
         )
         
-        # Add summary statistics
-        protein_counts = {}
-        cuisine_counts = {}
-        source_counts = {}
-        
-        for recipe in suggestions:
-            protein = recipe.get('protein', 'unknown')
-            cuisine = recipe.get('cuisine', 'unknown')
-            source = recipe.get('source', 'unknown')
+        if result['success']:
+            return jsonify(result)
+        else:
+            return jsonify({
+                'success': False,
+                'error': result.get('error', 'Unknown error'),
+                'suggestions': []
+            }), 500
             
-            protein_counts[protein] = protein_counts.get(protein, 0) + 1
-            cuisine_counts[cuisine] = cuisine_counts.get(cuisine, 0) + 1
-            source_counts[source] = source_counts.get(source, 0) + 1
-        
-        return jsonify({
-            'success': True,
-            'suggestions': suggestions,
-            'total_count': len(suggestions),
-            'summary': {
-                'protein_variety': protein_counts,
-                'cuisine_variety': cuisine_counts,
-                'source_breakdown': source_counts,
-                'web_recipes_included': include_web,
-                'generation_date': suggestions[0].get('suggested_date') if suggestions else None
-            }
-        })
     except Exception as e:
         return jsonify({
             'success': False,
-            'error': str(e)
+            'error': str(e),
+            'suggestions': []
         }), 500
 
 @enhanced_recipe_bp.route('/update-suggestions', methods=['POST'])
 @cross_origin()
 def update_suggestions_after_selection():
-    """Update suggestions after user selects a recipe with web recipe integration"""
+    """Update suggestions after user selects a recipe - simplified for V2"""
     try:
         data = request.get_json()
-        selected_recipe = data.get('selected_recipe')
-        remaining_suggestions = data.get('remaining_suggestions', [])
+        selected_recipe_names = data.get('selected_recipe_names', [])
         
-        updated_suggestions = enhanced_suggestion_generator.update_suggestions_after_selection(
-            selected_recipe, remaining_suggestions
-        )
+        # Update recent selections to avoid repetition
+        enhanced_suggestion_generator.update_recent_selections(selected_recipe_names)
         
-        # Add summary for updated suggestions
-        protein_counts = {}
-        for recipe in updated_suggestions:
-            protein = recipe.get('protein', 'unknown')
-            protein_counts[protein] = protein_counts.get(protein, 0) + 1
+        # Generate new suggestions excluding recent selections
+        result = enhanced_suggestion_generator.generate_weekly_suggestions(count=15, include_web=True)
         
-        return jsonify({
-            'success': True,
-            'updated_suggestions': updated_suggestions,
-            'remaining_count': len(updated_suggestions),
-            'protein_variety': protein_counts
-        })
+        if result['success']:
+            return jsonify(result)
+        else:
+            return jsonify({
+                'success': False,
+                'error': result.get('error', 'Failed to update suggestions'),
+                'suggestions': []
+            }), 500
+            
     except Exception as e:
         return jsonify({
             'success': False,
-            'error': str(e)
+            'error': str(e),
+            'suggestions': []
         }), 500
 
 @enhanced_recipe_bp.route('/search-recipes', methods=['POST'])
 @cross_origin()
 def search_web_recipes():
-    """Search cooking websites for specific recipe criteria"""
+    """Search for recipes by criteria - simplified for V2"""
     try:
         data = request.get_json()
         protein = data.get('protein')
@@ -111,46 +95,40 @@ def search_web_recipes():
         cooking_method = data.get('cooking_method')
         count = data.get('count', 10)
         
-        # Search web recipes
-        web_recipes = web_searcher.search_by_criteria(
-            protein=protein,
-            cuisine=cuisine,
-            cooking_method=cooking_method,
-            count=count
-        )
+        # Generate recipes and filter by criteria
+        result = enhanced_suggestion_generator.generate_weekly_suggestions(count=30, include_web=True)
         
-        # Also get matching user favorites and existing recipes
-        user_recipes = enhanced_suggestion_generator.get_recipe_suggestions_by_criteria(
-            protein=protein,
-            cuisine=cuisine,
-            cooking_method=cooking_method,
-            count=count
-        )
+        if not result['success']:
+            return jsonify({
+                'success': False,
+                'error': 'Failed to generate recipes',
+                'recipes': []
+            }), 500
         
-        # Combine results
-        all_recipes = web_recipes + user_recipes
-        
-        # Remove duplicates
-        unique_recipes = []
-        seen_names = set()
+        all_recipes = result['suggestions']
+        filtered_recipes = []
         
         for recipe in all_recipes:
-            name_key = recipe.get('name', '').lower()
-            if name_key not in seen_names:
-                unique_recipes.append(recipe)
-                seen_names.add(name_key)
+            matches = True
+            if protein and recipe.get('protein') != protein:
+                matches = False
+            if cuisine and recipe.get('cuisine') != cuisine:
+                matches = False
+            if cooking_method and recipe.get('cooking_method') != cooking_method:
+                matches = False
+            
+            if matches:
+                filtered_recipes.append(recipe)
         
         return jsonify({
             'success': True,
-            'recipes': unique_recipes[:count],
+            'recipes': filtered_recipes[:count],
             'search_criteria': {
                 'protein': protein,
                 'cuisine': cuisine,
                 'cooking_method': cooking_method
             },
-            'total_found': len(unique_recipes),
-            'web_recipes_count': len(web_recipes),
-            'user_recipes_count': len(user_recipes)
+            'total_found': len(filtered_recipes)
         })
     except Exception as e:
         return jsonify({
