@@ -7,7 +7,7 @@ import os
 backend_dir = os.path.dirname(os.path.dirname(os.path.dirname(__file__)))
 sys.path.insert(0, backend_dir)
 
-from enhanced_weekly_suggestion_generator_v2 import EnhancedWeeklySuggestionGeneratorV2
+from endless_recipe_generator import EndlessRecipeGenerator
 from integrated_grocery_system import IntegratedGrocerySystem
 from simple_grocery_generator import SimpleGroceryGenerator
 from recipe_manager import RecipeManager
@@ -16,8 +16,8 @@ from enhanced_web_recipe_search import EnhancedWebRecipeSearcher
 
 enhanced_recipe_bp = Blueprint('enhanced_recipe', __name__)
 
-# Initialize enhanced systems
-enhanced_suggestion_generator = EnhancedWeeklySuggestionGeneratorV2()
+# Initialize endless recipe system
+endless_recipe_generator = EndlessRecipeGenerator()
 grocery_system = IntegratedGrocerySystem()
 simple_grocery_generator = SimpleGroceryGenerator()
 recipe_manager = RecipeManager()
@@ -32,10 +32,11 @@ def get_weekly_suggestions():
         week_date = request.args.get('week_date')
         include_web = request.args.get('include_web', 'true').lower() == 'true'
         count = int(request.args.get('count', 20))
+        force_fresh = request.args.get('fresh', 'true').lower() == 'true'
         
-        result = enhanced_suggestion_generator.generate_weekly_suggestions(
+        result = endless_recipe_generator.generate_endless_recipes(
             count=count,
-            include_web=include_web
+            force_fresh=force_fresh
         )
         
         if result['success']:
@@ -57,16 +58,16 @@ def get_weekly_suggestions():
 @enhanced_recipe_bp.route('/update-suggestions', methods=['POST'])
 @cross_origin()
 def update_suggestions_after_selection():
-    """Update suggestions after user selects a recipe - simplified for V2"""
+    """Update suggestions after user selects a recipe - endless variety"""
     try:
         data = request.get_json()
         selected_recipe_names = data.get('selected_recipe_names', [])
         
         # Update recent selections to avoid repetition
-        enhanced_suggestion_generator.update_recent_selections(selected_recipe_names)
+        endless_recipe_generator.update_recent_selections(selected_recipe_names)
         
-        # Generate new suggestions excluding recent selections
-        result = enhanced_suggestion_generator.generate_weekly_suggestions(count=15, include_web=True)
+        # Generate new endless recipes excluding recent selections
+        result = endless_recipe_generator.generate_endless_recipes(count=15, force_fresh=True)
         
         if result['success']:
             return jsonify(result)
@@ -87,7 +88,7 @@ def update_suggestions_after_selection():
 @enhanced_recipe_bp.route('/search-recipes', methods=['POST'])
 @cross_origin()
 def search_web_recipes():
-    """Search for recipes by criteria - simplified for V2"""
+    """Search for recipes by criteria - endless variety"""
     try:
         data = request.get_json()
         protein = data.get('protein')
@@ -95,8 +96,8 @@ def search_web_recipes():
         cooking_method = data.get('cooking_method')
         count = data.get('count', 10)
         
-        # Generate recipes and filter by criteria
-        result = enhanced_suggestion_generator.generate_weekly_suggestions(count=30, include_web=True)
+        # Generate endless recipes and filter by criteria
+        result = endless_recipe_generator.generate_endless_recipes(count=30, force_fresh=True)
         
         if not result['success']:
             return jsonify({
@@ -128,7 +129,8 @@ def search_web_recipes():
                 'cuisine': cuisine,
                 'cooking_method': cooking_method
             },
-            'total_found': len(filtered_recipes)
+            'total_found': len(filtered_recipes),
+            'source': 'endless_web_search'
         })
     except Exception as e:
         return jsonify({
