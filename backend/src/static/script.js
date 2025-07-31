@@ -51,11 +51,11 @@ class RecipeSelector {
         button.disabled = true;
         button.innerHTML = '🔄 Generating Fresh Recipes...';
         
-        // Clear current selections and recipes to start completely fresh
-        this.selectedRecipes = [];
+        // PRESERVE selected recipes - don't clear them!
+        // Only clear the available recipes list, keep selectedRecipes intact
         this.allRecipes = [];
         this.renderRecipes(); // Clear the display immediately
-        this.updateUI();
+        this.updateUI(); // This will show the preserved selected recipes
         
         this.showLoading('🌐 Searching cooking websites for fresh gluten-free recipes...');
         
@@ -477,7 +477,7 @@ class RecipeSelector {
         // Selected recipes with cooking instructions
         html += `
             <div class="grocery-section">
-                <h2>🍽️ Your Weekly Menu</h2>
+                <h2>🍽️ Weekly Menu Summary</h2>
                 <div class="selected-recipes-summary">
                     ${selectedRecipes.map((recipe, index) => `
                         <div class="recipe-summary-card">
