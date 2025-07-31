@@ -19,11 +19,28 @@ app.register_blueprint(user_bp, url_prefix='/api')
 app.register_blueprint(enhanced_recipe_bp, url_prefix='/api/recipe')
 
 # uncomment if you need to use database
-app.config['SQLALCHEMY_DATABASE_URI'] = f"sqlite:///{os.path.join(os.path.dirname(__file__), 'database', 'app.db')}"
+# Create database directory if it doesn't exist
+db_dir = os.path.join(os.path.dirname(__file__), 'database')
+os.makedirs(db_dir, exist_ok=True)
+
+# Configure database with proper path
+db_path = os.path.join(db_dir, 'app.db')
+app.config['SQLALCHEMY_DATABASE_URI'] = f"sqlite:///{db_path}"
 app.config['SQLALCHEMY_TRACK_MODIFICATIONS'] = False
 db.init_app(app)
+
+# Create tables in application context
 with app.app_context():
-    db.create_all()
+    try:
+        db.create_all()
+        print(f"Database initialized successfully at: {db_path}")
+    except Exception as e:
+        print(f"Database initialization error: {e}")
+        # Fallback: try creating database in current directory
+        fallback_path = os.path.join(os.path.dirname(__file__), 'app.db')
+        app.config['SQLALCHEMY_DATABASE_URI'] = f"sqlite:///{fallback_path}"
+        db.create_all()
+        print(f"Database created at fallback location: {fallback_path}")
 
 @app.route('/', defaults={'path': ''})
 @app.route('/<path:path>')
