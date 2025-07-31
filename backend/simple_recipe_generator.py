@@ -31,6 +31,18 @@ class SimpleRecipeGenerator:
                         '1 tbsp olive oil',
                         'Salt and pepper to taste'
                     ],
+                    'instructions': [
+                        'Cook jasmine rice according to package directions.',
+                        'Heat olive oil in a large skillet over medium-high heat.',
+                        'Season chicken with salt and pepper, add to skillet.',
+                        'Cook chicken for 5-6 minutes until golden brown.',
+                        'Add minced garlic and cook for 1 minute until fragrant.',
+                        'Add broccoli florets and cook for 3-4 minutes.',
+                        'In a small bowl, mix honey and soy sauce.',
+                        'Pour sauce over chicken and broccoli, stir to coat.',
+                        'Cook for 2-3 minutes until sauce thickens.',
+                        'Serve over rice and enjoy!'
+                    ],
                     'url': 'https://example.com/honey-garlic-chicken'
                 },
                 {
@@ -50,6 +62,18 @@ class SimpleRecipeGenerator:
                         '1 tsp oregano',
                         '1 lemon, juiced',
                         'Salt and pepper to taste'
+                    ],
+                    'instructions': [
+                        'Preheat oven to 400°F (200°C).',
+                        'Cook quinoa according to package directions.',
+                        'Season chicken thighs with salt, pepper, and oregano.',
+                        'Heat 1 tbsp olive oil in an oven-safe skillet.',
+                        'Sear chicken thighs skin-side down for 5 minutes.',
+                        'Flip chicken and add vegetables around the pan.',
+                        'Drizzle vegetables with remaining olive oil and lemon juice.',
+                        'Transfer skillet to oven and bake for 25 minutes.',
+                        'Check that chicken reaches 165°F internal temperature.',
+                        'Serve chicken and vegetables over quinoa.'
                     ],
                     'url': 'https://example.com/mediterranean-chicken'
                 },

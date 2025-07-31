@@ -9,6 +9,7 @@ sys.path.insert(0, backend_dir)
 
 from enhanced_weekly_suggestion_generator import EnhancedWeeklySuggestionGenerator
 from integrated_grocery_system import IntegratedGrocerySystem
+from simple_grocery_generator import SimpleGroceryGenerator
 from recipe_manager import RecipeManager
 from recipe_search_engine import RecipeSearchEngine
 from enhanced_web_recipe_search import EnhancedWebRecipeSearcher
@@ -18,6 +19,7 @@ enhanced_recipe_bp = Blueprint('enhanced_recipe', __name__)
 # Initialize enhanced systems
 enhanced_suggestion_generator = EnhancedWeeklySuggestionGenerator()
 grocery_system = IntegratedGrocerySystem()
+simple_grocery_generator = SimpleGroceryGenerator()
 recipe_manager = RecipeManager()
 search_engine = RecipeSearchEngine()
 web_searcher = EnhancedWebRecipeSearcher()
@@ -221,19 +223,55 @@ def calculate_ingredient_overlap():
 @enhanced_recipe_bp.route('/grocery-list', methods=['POST'])
 @cross_origin()
 def generate_grocery_list():
-    """Generate enhanced grocery list for selected recipes"""
+    """Generate enhanced grocery list for selected recipes with reliable fallback"""
     try:
         data = request.get_json()
         selected_recipe_ids = data.get('recipe_ids', [])
+        selected_recipes_data = data.get('selected_recipes', [])  # Direct recipe data from frontend
         week_date = data.get('week_date')
         
-        if len(selected_recipe_ids) != 4:
+        if len(selected_recipe_ids) != 4 and len(selected_recipes_data) != 4:
             return jsonify({
                 'success': False,
                 'error': 'Exactly 4 recipes must be selected'
             }), 400
         
-        result = grocery_system.generate_final_grocery_list(selected_recipe_ids, week_date)
+        # Try to get recipes from recipe manager first
+        selected_recipes = []
+        if selected_recipe_ids:
+            for recipe_id in selected_recipe_ids:
+                recipe = recipe_manager.get_recipe_by_id(recipe_id)
+                if recipe:
+                    selected_recipes.append(recipe)
+        
+        # If we don't have 4 recipes from the manager, use the direct recipe data
+        if len(selected_recipes) != 4 and selected_recipes_data:
+            selected_recipes = selected_recipes_data
+        
+        if len(selected_recipes) != 4:
+            return jsonify({
+                'success': False,
+                'error': f'Could not find all selected recipes. Found {len(selected_recipes)} out of 4.'
+            }), 400
+        
+        # Try integrated grocery system first, fallback to simple generator
+        try:
+            result = grocery_system.generate_final_grocery_list(selected_recipe_ids, week_date)
+            result['generation_method'] = 'integrated_system'
+        except Exception as integrated_error:
+            print(f"Integrated grocery system failed: {integrated_error}")
+            print("Falling back to simple grocery generator...")
+            
+            # Use simple grocery generator as fallback
+            grocery_data = simple_grocery_generator.generate_grocery_list(selected_recipes)
+            
+            result = {
+                'formatted_list': grocery_data,
+                'raw_data': grocery_data,
+                'selected_recipes': selected_recipes,
+                'generation_date': grocery_data.get('generation_date'),
+                'generation_method': 'simple_fallback'
+            }
         
         return jsonify({
             'success': True,
@@ -241,12 +279,14 @@ def generate_grocery_list():
             'formatted_list': result['formatted_list'],
             'selected_recipes': result['selected_recipes'],
             'generation_date': result.get('generation_date'),
+            'generation_method': result.get('generation_method', 'unknown'),
             'week_date': week_date
         })
     except Exception as e:
+        print(f"Grocery list generation error: {str(e)}")
         return jsonify({
             'success': False,
-            'error': str(e)
+            'error': f'Failed to generate grocery list: {str(e)}'
         }), 500
 
 @enhanced_recipe_bp.route('/recipe/<recipe_id>', methods=['GET'])

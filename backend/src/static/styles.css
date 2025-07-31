@@ -806,3 +806,124 @@ header p {
     }
 }
 
+
+
+/* Enhanced Grocery Modal Styles */
+.grocery-section {
+    margin-bottom: 30px;
+    background: white;
+    border-radius: 15px;
+    padding: 25px;
+    box-shadow: 0 4px 15px rgba(0, 0, 0, 0.1);
+    border: 2px solid var(--sage-green);
+}
+
+.grocery-section h2 {
+    color: var(--warm-orange);
+    font-family: 'Playfair Display', serif;
+    font-size: 1.8rem;
+    margin-bottom: 20px;
+    border-bottom: 3px solid var(--golden-yellow);
+    padding-bottom: 10px;
+}
+
+/* Recipe Summary Cards */
+.selected-recipes-summary {
+    display: grid;
+    gap: 20px;
+}
+
+.recipe-summary-card {
+    background: linear-gradient(135deg, #fefefe 0%, var(--cream) 100%);
+    border-radius: 12px;
+    padding: 20px;
+    border: 2px solid var(--sage-green);
+    box-shadow: 0 4px 12px rgba(0, 0, 0, 0.1);
+}
+
+.recipe-summary-header h4 {
+    color: var(--warm-orange);
+    font-family: 'Playfair Display', serif;
+    font-size: 1.3rem;
+    margin: 0 0 8px 0;
+}
+
+.recipe-meta {
+    color: var(--sage-green);
+    font-size: 0.9rem;
+    font-weight: 500;
+}
+
+/* Cooking Instructions */
+.cooking-instructions {
+    margin-top: 15px;
+    padding: 15px;
+    background: linear-gradient(135deg, #f8f9fa 0%, #e9ecef 100%);
+    border-radius: 10px;
+    border-left: 4px solid var(--golden-yellow);
+}
+
+.cooking-instructions h5 {
+    color: var(--warm-orange);
+    font-family: 'Playfair Display', serif;
+    margin: 0 0 12px 0;
+    font-size: 1.1rem;
+}
+
+.cooking-instructions ol {
+    margin: 0;
+    padding-left: 20px;
+}
+
+.cooking-instructions li {
+    margin-bottom: 8px;
+    line-height: 1.5;
+    color: #333;
+}
+
+.cook-time {
+    margin: 12px 0 0 0;
+    padding: 8px 12px;
+    background: var(--golden-yellow);
+    border-radius: 20px;
+    font-size: 0.9rem;
+    font-weight: 600;
+    color: #333;
+    display: inline-block;
+}
+
+.cooking-instructions a {
+    color: var(--warm-orange);
+    text-decoration: none;
+    font-weight: 600;
+    transition: all 0.3s ease;
+}
+
+.cooking-instructions a:hover {
+    color: var(--sage-green);
+    text-decoration: underline;
+}
+
+/* Enhanced Modal Responsive Design */
+@media (max-width: 768px) {
+    .recipe-summary-card {
+        padding: 15px;
+    }
+    
+    .cooking-instructions {
+        padding: 12px;
+    }
+    
+    .grocery-section {
+        padding: 20px;
+    }
+    
+    .grocery-section h2 {
+        font-size: 1.5rem;
+    }
+    
+    .recipe-summary-header h4 {
+        font-size: 1.1rem;
+    }
+}
+
