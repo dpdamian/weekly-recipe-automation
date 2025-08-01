@@ -234,24 +234,49 @@ def generate_grocery_list():
                 'error': f'Could not find all selected recipes. Found {len(selected_recipes)} out of 4.'
             }), 400
         
-        # Try integrated grocery system first, fallback to simple generator
+        # Try intelligent grocery combiner first for best quantity combination
         try:
-            result = grocery_system.generate_final_grocery_list(selected_recipe_ids, week_date)
-            result['generation_method'] = 'integrated_system'
-        except Exception as integrated_error:
-            print(f"Integrated grocery system failed: {integrated_error}")
-            print("Falling back to simple grocery generator...")
+            import sys
+            import os
+            sys.path.append(os.path.dirname(os.path.dirname(__file__)))
+            from intelligent_grocery_combiner import IntelligentGroceryCombiner
             
-            # Use simple grocery generator as fallback
-            grocery_data = simple_grocery_generator.generate_grocery_list(selected_recipes)
+            combiner = IntelligentGroceryCombiner()
+            combiner_result = combiner.generate_combined_grocery_list(selected_recipes)
             
-            result = {
-                'formatted_list': grocery_data,
-                'raw_data': grocery_data,
-                'selected_recipes': selected_recipes,
-                'generation_date': grocery_data.get('generation_date'),
-                'generation_method': 'simple_fallback'
-            }
+            if combiner_result['success']:
+                result = {
+                    'formatted_list': combiner_result,
+                    'raw_data': combiner_result,
+                    'selected_recipes': selected_recipes,
+                    'generation_date': None,
+                    'generation_method': 'intelligent_combiner'
+                }
+            else:
+                raise Exception(f"Intelligent combiner failed: {combiner_result.get('error', 'Unknown error')}")
+                
+        except Exception as combiner_error:
+            print(f"Intelligent grocery combiner failed: {combiner_error}")
+            print("Falling back to integrated grocery system...")
+            
+            # Try integrated grocery system as fallback
+            try:
+                result = grocery_system.generate_final_grocery_list(selected_recipe_ids, week_date)
+                result['generation_method'] = 'integrated_system'
+            except Exception as integrated_error:
+                print(f"Integrated grocery system failed: {integrated_error}")
+                print("Falling back to simple grocery generator...")
+                
+                # Use simple grocery generator as final fallback
+                grocery_data = simple_grocery_generator.generate_grocery_list(selected_recipes)
+                
+                result = {
+                    'formatted_list': grocery_data,
+                    'raw_data': grocery_data,
+                    'selected_recipes': selected_recipes,
+                    'generation_date': grocery_data.get('generation_date'),
+                    'generation_method': 'simple_fallback'
+                }
         
         return jsonify({
             'success': True,

@@ -465,89 +465,86 @@ class RecipeSelector {
         const modal = document.getElementById('groceryModal');
         const content = document.getElementById('groceryListContent');
         
-        const groceryList = data.raw_data.grocery_list;
+        // Check if we have intelligent combiner data
+        const groceryData = data.raw_data || data.formatted_list || {};
+        const groceryList = groceryData.grocery_list || {};
+        const statistics = groceryData.statistics || {};
         const selectedRecipes = data.selected_recipes || this.selectedRecipes;
+        
         const departmentEmojis = {
             'produce': '🥬',
             'meat_seafood': '🥩',
             'dairy': '🥛',
             'pantry': '🏺',
             'frozen': '🧊',
-            'condiments': '🍯',
-            'spices': '🌿'
+            'bakery': '🍞',
+            'canned_goods': '🥫',
+            'other': '📦'
         };
 
         let html = '';
         
-        // Selected recipes with cooking instructions
-        html += `
-            <div class="grocery-section">
-                <h2>🍽️ Weekly Menu Summary</h2>
-                <div class="selected-recipes-summary">
-                    ${selectedRecipes.map((recipe, index) => `
-                        <div class="recipe-summary-card">
-                            <div class="recipe-summary-header">
-                                <h4>${recipe.name}</h4>
-                                <span class="recipe-meta">
-                                    ${this.getProteinEmoji(recipe.protein)} ${recipe.protein} • 
-                                    ${this.getCuisineEmoji(recipe.cuisine)} ${recipe.cuisine} • 
-                                    ${this.getMethodEmoji(recipe.cooking_method)} ${recipe.cooking_method}
-                                </span>
-                            </div>
-                            
-                            ${recipe.ingredients ? `
-                                <div class="recipe-ingredients-full">
-                                    <h5>📋 Ingredients:</h5>
-                                    <ul>
-                                        ${recipe.ingredients.map(ingredient => `<li>${ingredient}</li>`).join('')}
-                                    </ul>
-                                </div>
-                            ` : ''}
-                            
-                            ${recipe.instructions ? `
-                                <div class="cooking-instructions">
-                                    <h5>👨‍🍳 Cooking Instructions:</h5>
-                                    <ol>
-                                        ${recipe.instructions.map(step => `<li>${step}</li>`).join('')}
-                                    </ol>
-                                    <p class="cook-time">⏱️ Prep: ${recipe.prep_time || 15} min • Cook: ${recipe.cook_time || 25} min</p>
-                                </div>
-                            ` : `
-                                <div class="cooking-instructions">
-                                    <p>📖 <a href="${recipe.url || '#'}" target="_blank">View full recipe and instructions</a></p>
-                                </div>
-                            `}
-                            
-                            ${recipe.url ? `
-                                <div class="recipe-link-footer">
-                                    <a href="${recipe.url}" target="_blank" class="full-recipe-link">
-                                        📖 View Full Recipe Online
-                                    </a>
-                                </div>
-                            ` : ''}
+        // Show combination statistics if available
+        if (statistics.total_recipes) {
+            html += `
+                <div class="grocery-section combination-stats">
+                    <h2>📊 Smart Combination Results</h2>
+                    <div class="stats-grid">
+                        <div class="stat-item">
+                            <span class="stat-number">${statistics.total_recipes}</span>
+                            <span class="stat-label">🍽️ Recipes</span>
                         </div>
-                    `).join('')}
+                        <div class="stat-item">
+                            <span class="stat-number">${statistics.total_original_ingredients}</span>
+                            <span class="stat-label">📝 Original Ingredients</span>
+                        </div>
+                        <div class="stat-item">
+                            <span class="stat-number">${statistics.total_unique_ingredients}</span>
+                            <span class="stat-label">🎯 Combined Items</span>
+                        </div>
+                        <div class="stat-item">
+                            <span class="stat-number">${statistics.combination_efficiency}%</span>
+                            <span class="stat-label">⚡ Efficiency</span>
+                        </div>
+                    </div>
+                    <p class="efficiency-note">
+                        🌟 Smart combination reduced your shopping list by ${statistics.combination_efficiency}%! 
+                        Quantities have been automatically combined for efficiency.
+                    </p>
                 </div>
-            </div>
-        `;
+            `;
+        }
         
-        // Grocery list by department
-        html += `<div class="grocery-section"><h2>🛒 Shopping List</h2>`;
+        // Grocery list by department with combined quantities
+        html += `<div class="grocery-section"><h2>🛒 Shopping List by Department</h2>`;
         
         for (const [department, items] of Object.entries(groceryList)) {
-            const emoji = departmentEmojis[department] || '🛒';
-            const deptName = department.replace('_', ' ').replace(/\b\w/g, l => l.toUpperCase());
-            
-            html += `
-                <div class="grocery-department">
-                    <h3>${emoji} ${deptName} (${items.length} items)</h3>
-                    ${items.map(item => `
-                        <div class="grocery-item">
-                            <input type="checkbox" id="item-${item.name.replace(/\s+/g, '-')}">
-                            <label for="item-${item.name.replace(/\s+/g, '-')}">${item.quantity} ${item.name}</label>
-                        </div>
-                    `).join('')}
-                </div>
+            if (items && items.length > 0) {
+                const emoji = departmentEmojis[department] || '🛒';
+                const deptName = department.replace('_', ' ').replace(/\b\w/g, l => l.toUpperCase());
+                
+                html += `
+                    <div class="grocery-department">
+                        <h3>${emoji} ${deptName} (${items.length} items)</h3>
+                        ${items.map(item => {
+                            const combinedInfo = item.original_entries && item.original_entries.length > 1 
+                                ? `<div class="combination-info">Combined from: ${item.original_entries.join(', ')}</div>`
+                                : '';
+                            
+                            return `
+                                <div class="grocery-item ${item.original_entries && item.original_entries.length > 1 ? 'combined-item' : ''}">
+                                    <input type="checkbox" id="item-${item.name.replace(/\s+/g, '-')}">
+                                    <label for="item-${item.name.replace(/\s+/g, '-')}">
+                                        <strong>${item.quantity}</strong> ${item.name}
+                                    </label>
+                                    ${combinedInfo}
+                                </div>
+                            `;
+                        }).join('')}
+                    </div>
+                `;
+            }
+        }
             `;
         }
         
